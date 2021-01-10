@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/kevoneil/droopy/issues"
   },
-  "homepage": "https://github.com/kevoneil/droopy#readme"
+  "homepage": "https://github.com/kevoneil/droopy#readme",
+  "devDependencies": {
+    "react": "^17.0.1"
+  }
 }
