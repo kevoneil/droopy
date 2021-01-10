@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { HTMLProps } from 'react'
 
-interface Props {
+interface Props extends HTMLProps<HTMLUListElement> {
   styles?: {};
   className?: string;
   children: JSX.Element | JSX.Element[];

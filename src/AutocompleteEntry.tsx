@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 
-interface Props {
+interface Props extends HTMLProps<HTMLLIElement> {
   children: string;
 }
 
