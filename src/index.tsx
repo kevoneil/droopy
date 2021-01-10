@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Input } from './Input'
+import { Autocomplete } from './AutocompleteInput'
 
 const domContainer = document.querySelector('#app');
-ReactDOM.render(<Input />, domContainer);
+ReactDOM.render(<Autocomplete />, domContainer);
