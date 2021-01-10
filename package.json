@@ -4,7 +4,7 @@
   "description": "A better, more accessible, dropdown menu",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel demo/index.html"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/kevoneil/droopy#readme",
   "devDependencies": {
     "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "sass": "^1.32.2",
     "typescript": "^4.1.3"
   }
