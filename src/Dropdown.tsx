@@ -1,9 +1,13 @@
 import React from 'react'
 
 interface Props { 
-  children: JSX.Element | JSX.Element[]
+  className?: string;
+  styles?: {};
+  children: JSX.Element | JSX.Element[];
 }
 
-export const Dropdown = ({ children }: Props) => { 
-  return <div>{children}</div>
+export const Dropdown = (props: Props) => { 
+  const { children, ...options} = props;
+
+  return <div {...options}>{children}</div>
 }

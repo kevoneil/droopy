@@ -2,7 +2,14 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Input } from './Input';
 import { Dropdown } from './Dropdown';
 
-export const Autocomplete = () => {
+interface Props {
+  dropdownClassName?: string
+  children: JSX.Element | JSX.Element[];
+}
+
+export const Autocomplete = (props: Props) => {
+  const { children, ...options } = props;
+
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
@@ -18,6 +25,7 @@ export const Autocomplete = () => {
   return (
     <>
       <Input 
+        {...options}
         ref={inputRef}
         value={inputValue} 
         onChange={(event) => { 
@@ -25,8 +33,8 @@ export const Autocomplete = () => {
         }}
       />
       {showDropdown && (
-        <Dropdown>
-          <h3>test</h3>
+        <Dropdown className={options?.dropdownClassName}>
+          {children}
         </Dropdown>
       )}
     </>
