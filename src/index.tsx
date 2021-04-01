@@ -8,6 +8,7 @@ const domContainer = document.querySelector('#app');
 
 const app = () => {
   const results = ['test', 'test2']
+
   return (
     <>
       <Autocomplete>
@@ -21,4 +22,4 @@ const app = () => {
   )
 }
 
-ReactDOM.render(app, domContainer);
+ReactDOM.render(app(), domContainer);
