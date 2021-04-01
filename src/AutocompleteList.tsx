@@ -19,10 +19,10 @@ export const AutocompleteList = (props: Props) => {
       )}
       <ul role="listbox" {...options} aria-labelledby="label">
         {children}
-        <div aria-live="polite" role="log" className="hidden-text">
-          {options?.ariaResults}
-        </div>
       </ul>
+      <div aria-live="polite" role="log" className="hidden-text">
+        {options?.ariaResults}
+      </div>
     </>
   );
 }

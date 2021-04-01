@@ -14,9 +14,9 @@ const app = () => {
   return (
     <>
       <Autocomplete>
-        <AutocompleteList ariaResults={`${results.length} results found`} headerText="Recent Entries" ariaGroupHeader="group-1-header">
+        <AutocompleteList ariaResults={`${results.length} results found`} headerText="Recent Entries" ariaGroupHeader={`${ariaGroup}-header`}>
           {results.map((result, index) => (
-            <AutocompleteEntry key={result} aria-labelledby={`${ariaGroup}-option-${index}`}>{result}</AutocompleteEntry>
+            <AutocompleteEntry  key={result} id={`${ariaGroup}-option-${index}`}>{result}</AutocompleteEntry>
           ))}
         </AutocompleteList>
       </Autocomplete>
