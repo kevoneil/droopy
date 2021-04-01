@@ -12,7 +12,7 @@ const app = () => {
   return (
     <>
       <Autocomplete>
-        <AutocompleteList numberOfResults={results.length}>
+        <AutocompleteList ariaResults={`${results.length} results found`}>
           {results.map(result => (
             <AutocompleteEntry key={result}>{result}</AutocompleteEntry>
           ))}

@@ -4,7 +4,7 @@ interface Props extends HTMLProps<HTMLUListElement> {
   styles?: {};
   className?: string;
   children: JSX.Element | JSX.Element[];
-  numberOfResults: number;
+  ariaResults: string;
 }
 
 export const AutocompleteList = (props: Props) => {
