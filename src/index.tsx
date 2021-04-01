@@ -14,7 +14,7 @@ const app = () => {
       <Autocomplete>
         <AutocompleteList numberOfResults={results.length}>
           {results.map(result => (
-            <AutocompleteEntry>{result}</AutocompleteEntry>
+            <AutocompleteEntry key={result}>{result}</AutocompleteEntry>
           ))}
         </AutocompleteList>
       </Autocomplete>
