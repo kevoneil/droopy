@@ -12,15 +12,13 @@ const app = () => {
   const ariaGroup = 'group-0'
 
   return (
-    <>
-      <Autocomplete>
-        <AutocompleteList ariaResults={`${results.length} results found`} headerText="Recent Entries" ariaGroupHeader={`${ariaGroup}-header`}>
-          {results.map((result, index) => (
-            <AutocompleteEntry  key={result} id={`${ariaGroup}-option-${index}`}>{result}</AutocompleteEntry>
-          ))}
-        </AutocompleteList>
-      </Autocomplete>
-    </>
+    <Autocomplete>
+      <AutocompleteList ariaResults={`${results.length} results found`} headerText="Recent Entries" ariaGroupHeader={`${ariaGroup}-header`}>
+        {results.map((result, index) => (
+          <AutocompleteEntry  key={result} id={`${ariaGroup}-option-${index}`}>{result}</AutocompleteEntry>
+        ))}
+      </AutocompleteList>
+    </Autocomplete>
   )
 }
 
