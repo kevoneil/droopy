@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { Autocomplete } from './AutocompleteInput'
 import { AutocompleteList } from './AutocompleteList'
 import { AutocompleteEntry } from './AutocompleteEntry'
+import './styles.scss'
 
 const domContainer = document.querySelector('#app');
 
