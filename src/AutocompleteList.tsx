@@ -5,17 +5,24 @@ interface Props extends HTMLProps<HTMLUListElement> {
   className?: string;
   children: JSX.Element | JSX.Element[];
   ariaResults: string;
+  ariaGroupHeader?: string;
+  headerText?: string
 }
 
 export const AutocompleteList = (props: Props) => {
-  const {children, ...options } = props
+  const {children, headerText, ariaGroupHeader, ...options } = props
   
   return (
-    <ul role="listbox" {...options}>
-      {children}
-      <div aria-live="polite" role="log" className="hidden-text">
-        {options?.ariaResults}
-      </div>
-    </ul>
+    <>
+      {headerText && ariaGroupHeader && (
+        <h3 aria-aria-labelledby={ariaGroupHeader}>{headerText}</h3>
+      )}
+      <ul role="listbox" {...options} aria-labelledby="label">
+        {children}
+        <div aria-live="polite" role="log" className="hidden-text">
+          {options?.ariaResults}
+        </div>
+      </ul>
+    </>
   );
 }

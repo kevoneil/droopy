@@ -9,13 +9,14 @@ const domContainer = document.querySelector('#app');
 
 const app = () => {
   const results = ['test', 'test2']
+  const ariaGroup = 'group-0'
 
   return (
     <>
       <Autocomplete>
-        <AutocompleteList ariaResults={`${results.length} results found`}>
-          {results.map(result => (
-            <AutocompleteEntry key={result}>{result}</AutocompleteEntry>
+        <AutocompleteList ariaResults={`${results.length} results found`} headerText="Recent Entries" ariaGroupHeader="group-1-header">
+          {results.map((result, index) => (
+            <AutocompleteEntry key={result} aria-labelledby={`${ariaGroup}-option-${index}`}>{result}</AutocompleteEntry>
           ))}
         </AutocompleteList>
       </Autocomplete>
