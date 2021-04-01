@@ -14,7 +14,7 @@ export const AutocompleteList = (props: Props) => {
     <ul role="listbox" {...options}>
       {children}
       <div aria-live="assertive">
-        {options?.numberOfResults}
+        {options?.ariaResults}
       </div>
     </ul>
   );
