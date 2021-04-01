@@ -6,14 +6,19 @@ import { AutocompleteEntry } from './AutocompleteEntry'
 
 const domContainer = document.querySelector('#app');
 
-const app = 
-  <>
-    <Autocomplete>
-      <AutocompleteList>
-        <AutocompleteEntry>test</AutocompleteEntry>
-        <AutocompleteEntry>test2</AutocompleteEntry>
-      </AutocompleteList>
-    </Autocomplete>
-  </>
+const app = () => {
+  const results = ['test', 'test2']
+  return (
+    <>
+      <Autocomplete>
+        <AutocompleteList numberOfResults={results.length}>
+          {results.map(result => (
+            <AutocompleteEntry>{result}</AutocompleteEntry>
+          ))}
+        </AutocompleteList>
+      </Autocomplete>
+    </>
+  )
+}
 
 ReactDOM.render(app, domContainer);

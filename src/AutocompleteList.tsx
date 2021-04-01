@@ -4,10 +4,18 @@ interface Props extends HTMLProps<HTMLUListElement> {
   styles?: {};
   className?: string;
   children: JSX.Element | JSX.Element[];
+  numberOfResults: number;
 }
 
 export const AutocompleteList = (props: Props) => {
   const {children, ...options } = props
   
-  return <ul role="listbox" {...options}>{children}</ul>;
+  return (
+    <ul role="listbox" {...options}>
+      {children}
+      <div aria-live="assertive">
+        {options?.numberOfResults}
+      </div>
+    </ul>
+  );
 }

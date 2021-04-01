@@ -1,0 +1,70 @@
+var helpers = require("../../.nvm/versions/node/v15.12.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "Autocomplete", function () {
+    return Autocomplete;
+  });
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _Input = require('./Input');
+  var _Dropdown = require('./Dropdown');
+  var _jsxFileName = "/Users/kevinoneil/droopy/src/AutocompleteInput.tsx";
+  function _extends() {
+    _extends = Object.assign || (function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    });
+    return _extends.apply(this, arguments);
+  }
+  const Autocomplete = props => {
+    const {children, ...options} = props;
+    const inputRef = _react.useRef(null);
+    const [inputValue, setInputValue] = _react.useState('');
+    const [showDropdown, setShowDropdown] = _react.useState(false);
+    _react.useEffect(() => {
+      if (inputValue.length > 0) {
+        setShowDropdown(true);
+      } else {
+        setShowDropdown(false);
+      }
+    }, [inputValue, setShowDropdown]);
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/_reactDefault.default.createElement(_Input.Input, _extends({}, options, {
+        ref: inputRef,
+        value: inputValue,
+        onChange: event => {
+          setInputValue(event.currentTarget.value);
+        },
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 27,
+          columnNumber: 7
+        }
+      })), showDropdown && /*#__PURE__*/_reactDefault.default.createElement(_Dropdown.Dropdown, {
+        className: options?.dropdownClassName,
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36,
+          columnNumber: 9
+        }
+      }, children))
+    );
+  };
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
