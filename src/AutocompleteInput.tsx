@@ -3,12 +3,13 @@ import { Input } from './Input';
 import { Dropdown } from './Dropdown';
 
 interface Props {
+  results: string[]
   dropdownClassName?: string
   children: JSX.Element | JSX.Element[];
 }
 
 export const Autocomplete = (props: Props) => {
-  const { children, ...options } = props;
+  const { results, children, ...options } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState('');

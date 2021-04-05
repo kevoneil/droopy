@@ -12,7 +12,7 @@ const app = () => {
   const ariaGroup = 'group-0'
 
   return (
-    <Autocomplete>
+    <Autocomplete results={results}>
       <AutocompleteList ariaResults={`${results.length} results found`} headerText="Recent Entries" ariaGroupHeader={`${ariaGroup}-header`}>
         {results.map((result, index) => (
           <AutocompleteEntry  key={result} id={`${ariaGroup}-option-${index}`}>{result}</AutocompleteEntry>
