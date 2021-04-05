@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Input } from './Input';
 import { Dropdown } from './Dropdown';
 
+import { useHighlightedEntry } from './hooks/useHighlighedEntry'
+
 interface Props {
   results: string[]
   dropdownClassName?: string
@@ -10,13 +12,14 @@ interface Props {
 
 export const Autocomplete = (props: Props) => {
   const { results, children, ...options } = props;
+  const { getNextEntry } = useHighlightedEntry(results)
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
-    if (inputValue.length > 0) {
+    if (inputValue?.length > 0) {
       setShowDropdown(true);
     } else {
       setShowDropdown(false)
@@ -29,6 +32,12 @@ export const Autocomplete = (props: Props) => {
         {...options}
         ref={inputRef}
         value={inputValue} 
+        onKeyDown={(event) => {
+          if (event.key === 'ArrowDown') {
+            const entry = getNextEntry()
+            setInputValue(entry)
+          }
+        }}
         onChange={(event) => { 
           setInputValue(event.currentTarget.value);
         }}
