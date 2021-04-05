@@ -5,7 +5,8 @@ export const useHighlightedEntry = (results: string[]) => {
 
   const getNextEntry = () => {
     if (highlightedIndex + 1 > results.length) {
-        return results[0];
+      setHighlightedIndex(0)
+      return results[0];
     }
 
     setHighlightedIndex(highlightedIndex + 1);
