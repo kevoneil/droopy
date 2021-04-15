@@ -12,7 +12,7 @@ interface Props {
 
 export const Autocomplete = (props: Props) => {
   const { results, children, ...options } = props;
-  const { getNextEntry } = useHighlightedEntry(results)
+  const { getPreviousEntry, getNextEntry } = useHighlightedEntry(results)
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState('');
@@ -33,6 +33,10 @@ export const Autocomplete = (props: Props) => {
         ref={inputRef}
         value={inputValue} 
         onKeyDown={(event) => {
+          if (event.key === 'ArrowUp') {
+            const entry = getPreviousEntry()
+            setInputValue(entry)
+          }
           if (event.key === 'ArrowDown') {
             const entry = getNextEntry()
             setInputValue(entry)
