@@ -4,7 +4,8 @@
   "description": "A better, more accessible, dropdown menu",
   "main": "index.js",
   "scripts": {
-    "start": "parcel demo/index.html"
+    "start": "parcel demo/index.html",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,12 +19,16 @@
   },
   "homepage": "https://github.com/kevoneil/droopy#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
     "@parcel/transformer-sass": "^2.0.0-beta.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-test-renderer": "^17.0.2",
     "sass": "^1.32.2",
     "typescript": "^4.1.3"
   }
