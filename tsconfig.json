@@ -3,6 +3,7 @@
     "baseUrl": "./src",
     "esModuleInterop": true,
     "jsx": "react",
+    "types": ["jest"],
     "paths": {
       "~*": ["./*"]
     },
