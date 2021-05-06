@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { Input } from './Input';
 import { Dropdown } from './Dropdown';
 
@@ -10,11 +10,10 @@ interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-export const Autocomplete = (props: Props) => {
+export const AutocompleteInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { results, children, ...options } = props;
   const { getPreviousEntry, getNextEntry } = useHighlightedEntry(results)
 
-  const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -30,7 +29,7 @@ export const Autocomplete = (props: Props) => {
     <>
       <Input 
         {...options}
-        ref={inputRef}
+        ref={ref}
         value={inputValue} 
         onKeyDown={(event) => {
           if (event.key === 'ArrowUp') {
@@ -53,4 +52,4 @@ export const Autocomplete = (props: Props) => {
       )}
     </>
   )
-}
+})
