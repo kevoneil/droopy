@@ -3,6 +3,7 @@ import React, { forwardRef, HTMLProps } from 'react';
 import { useHighlightedEntry } from './hooks/useHighlighedEntry'
 
 interface Props {
+  value: string
   results: string[]
   setInputValue: (entry: string) => void
 }
