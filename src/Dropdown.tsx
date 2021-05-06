@@ -9,5 +9,5 @@ interface Props {
 export const Dropdown = (props: Props) => { 
   const { children, ...options} = props;
 
-  return <div {...options}>{children}</div>
+  return <div data-testid="autocomplete-dropdown" {...options}>{children}</div>
 }
