@@ -8,7 +8,7 @@ import './styles.scss'
 const domContainer = document.querySelector('#app');
 
 const app = () => {
-  const results = ['test', 'test2']
+  const results = ['test', 'beer map']
   const ariaGroup = 'group-0'
 
   return (
