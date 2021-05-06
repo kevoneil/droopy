@@ -16,7 +16,7 @@ export const Autocomplete = () => {
     if (result.match(inputRef.current?.value)) {
       return result
     }
-  }), [])
+  }), [inputValue])
 
   return (
     <>
