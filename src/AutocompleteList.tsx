@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react'
+import React, { HTMLProps } from "react";
 
 interface Props extends HTMLProps<HTMLUListElement> {
   styles?: {};
@@ -6,12 +6,18 @@ interface Props extends HTMLProps<HTMLUListElement> {
   children: JSX.Element | JSX.Element[];
   ariaResultsText: string;
   ariaGroupHeader?: string;
-  headerText?: string
+  headerText?: string;
 }
 
 export const AutocompleteList = (props: Props) => {
-  const {children, headerText, ariaResultsText, ariaGroupHeader, ...options } = props
-  
+  const {
+    children,
+    headerText,
+    ariaResultsText,
+    ariaGroupHeader,
+    ...options
+  } = props;
+
   return (
     <>
       {headerText && ariaGroupHeader && (
@@ -25,4 +31,4 @@ export const AutocompleteList = (props: Props) => {
       </div>
     </>
   );
-}
+};
