@@ -48,19 +48,26 @@ export const Autocomplete = () => {
       {showDropdown && inputValue.length > 0 && (
         <Dropdown>
           {flattenedResults &&
-            Object.entries(filteredResults).map((entry) => {
-              const [entryName] = entry;
+            Object.entries(filteredResults).map((entry, index) => {
+              const [entryName, value] = entry;
+              const headerId = `group-${index}-header`;
               return (
-                <AutocompleteList
-                  headerText={
-                    entryName === "recentSearches"
+                <>
+                  <h3 id={headerId}>
+                    {entryName === "recentSearches"
                       ? "Recent Searches"
-                      : "Popular Searches"
-                  }
-                  ariaGroupHeader={`${ariaGroup}-header`}
-                >
-                  <div>test</div>
-                </AutocompleteList>
+                      : "Popular Searches"}
+                  </h3>
+                  <AutocompleteList aria-labelledby={headerId}>
+                    {value.map((s, optionIndex) => (
+                      <AutocompleteEntry
+                        id={`group-${index}-option-${optionIndex}`}
+                      >
+                        {s}
+                      </AutocompleteEntry>
+                    ))}
+                  </AutocompleteList>
+                </>
               );
             })}
         </Dropdown>

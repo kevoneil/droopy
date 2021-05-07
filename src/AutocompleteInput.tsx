@@ -11,6 +11,7 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
     const { onChange, ...options } = props;
     const {
+      activeGroup,
       highlightedIndex,
       getNextEntry,
       getPreviousEntry,
