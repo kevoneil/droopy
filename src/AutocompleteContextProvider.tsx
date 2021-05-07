@@ -1,9 +1,13 @@
 import React, { createContext } from "react";
 import { useHighlightedEntry } from "./hooks";
 
-type ContextReturnType = ReturnType<typeof useHighlightedEntry> | {};
+type ContextReturnType = ReturnType<typeof useHighlightedEntry>;
 
-export const AutocompleteContext = createContext<ContextReturnType>({});
+export const AutocompleteContext = createContext<ContextReturnType>({
+  highlightedIndex: -1,
+  getPreviousEntry: () => "",
+  getNextEntry: () => "",
+});
 
 interface Props {
   results: string[];

@@ -11,7 +11,7 @@ interface Props {
 export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
     const { results, onChange, ...options } = props;
-    const { getPreviousEntry, getNextEntry } = useAutocomplete();
+    const { getNextEntry, getPreviousEntry } = useAutocomplete();
 
     return (
       <input
