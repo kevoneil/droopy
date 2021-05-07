@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel demo/index.html",
     "test": "jest",
-    "prettier": "prettier"
+    "prettier": "prettier --write ."
   },
   "repository": {
     "type": "git",
