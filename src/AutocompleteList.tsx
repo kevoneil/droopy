@@ -9,13 +9,7 @@ interface Props extends HTMLProps<HTMLUListElement> {
 }
 
 export const AutocompleteList = (props: Props) => {
-  const {
-    children,
-    headerText,
-    ariaResultsText,
-    ariaGroupHeader,
-    ...options
-  } = props;
+  const { children, headerText, ariaGroupHeader, ...options } = props;
 
   return (
     <>
