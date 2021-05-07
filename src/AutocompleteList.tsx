@@ -4,7 +4,6 @@ interface Props extends HTMLProps<HTMLUListElement> {
   styles?: {};
   className?: string;
   children: JSX.Element | JSX.Element[];
-  ariaResultsText: string;
   ariaGroupHeader?: string;
   headerText?: string;
 }
@@ -26,9 +25,6 @@ export const AutocompleteList = (props: Props) => {
       <ul role="listbox" {...options} aria-labelledby="label">
         {children}
       </ul>
-      <div aria-live="polite" role="log" className="hidden-text">
-        {ariaResultsText}
-      </div>
     </>
   );
 };

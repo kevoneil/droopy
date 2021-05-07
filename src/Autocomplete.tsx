@@ -12,15 +12,20 @@ export const Autocomplete = () => {
   const results = ["beer", "hummus", "candy"];
   const ariaGroup = "group-0";
 
-  const filteredResults = useMemo(
-    () =>
-      results.filter((result) => {
-        if (result.match(inputRef.current?.value)) {
-          return result;
-        }
-      }),
-    [inputValue]
-  );
+  function getResults() {
+    const inputValue = inputRef.current?.value;
+
+    if (!inputValue?.length) return [];
+
+    return results.filter((result) => {
+      if (result.match(inputValue)) {
+        return result;
+      }
+    });
+  }
+
+  const filteredResults = useMemo(() => getResults(), [inputValue]);
+  const resultsString = `${filteredResults?.length || 0} results found`;
 
   return (
     <>
@@ -28,12 +33,11 @@ export const Autocomplete = () => {
         ref={inputRef}
         value={inputValue}
         setInputValue={setInputValue}
-        results={results}
+        results={filteredResults}
       />
       {showDropdown && (
         <Dropdown>
           <AutocompleteList
-            ariaResultsText={`${results.length} results found`}
             headerText="Recent Entries"
             ariaGroupHeader={`${ariaGroup}-header`}
           >
@@ -48,6 +52,9 @@ export const Autocomplete = () => {
           </AutocompleteList>
         </Dropdown>
       )}
+      <div aria-live="assertive" className="hidden-text">
+        {resultsString}
+      </div>
     </>
   );
 };
