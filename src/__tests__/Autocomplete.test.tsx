@@ -17,7 +17,7 @@ test("Autocomplete does not break", () => {
           setInputValue={() => {}}
           results={results}
         />
-        <AutocompleteList ariaResultsText="1 results found">
+        <AutocompleteList>
           <AutocompleteEntry>test</AutocompleteEntry>
         </AutocompleteList>
       </>
