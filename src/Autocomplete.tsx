@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import { AutocompleteInput } from "./AutocompleteInput";
 import { AutocompleteList } from "./AutocompleteList";
 import { AutocompleteEntry } from "./AutocompleteEntry";
 import { Dropdown } from "./Dropdown";
 import { useShowDropdown } from "./hooks/useShowDropdown";
+import { AutocompleteContextProvider } from "./AutocompleteContextProvider";
 
 export const Autocomplete = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,11 +29,11 @@ export const Autocomplete = () => {
   const resultsString = `${filteredResults?.length || 0} results found`;
 
   return (
-    <>
+    <AutocompleteContextProvider results={results}>
       <AutocompleteInput
         ref={inputRef}
         value={inputValue}
-        setInputValue={setInputValue}
+        onChange={setInputValue}
         results={filteredResults}
       />
       {showDropdown && (
@@ -55,6 +56,6 @@ export const Autocomplete = () => {
       <div aria-live="assertive" className="hidden-text">
         {resultsString}
       </div>
-    </>
+    </AutocompleteContextProvider>
   );
 };

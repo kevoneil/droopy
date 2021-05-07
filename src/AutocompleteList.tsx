@@ -14,7 +14,7 @@ export const AutocompleteList = (props: Props) => {
   return (
     <>
       {headerText && ariaGroupHeader && (
-        <h3 aria-labelledby={ariaGroupHeader}>{headerText}</h3>
+        <h3 aria-labelledby="group-0-header">{headerText}</h3>
       )}
       <ul role="listbox" {...options} aria-labelledby="label">
         {children}

@@ -5,12 +5,12 @@ import { useHighlightedEntry } from "./hooks/useHighlighedEntry";
 interface Props {
   value: string;
   results: string[];
-  setInputValue: (entry: string) => void;
+  onChange: (param: string) => void;
 }
 
 export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
-    const { results, setInputValue, ...options } = props;
+    const { results, onChange, ...options } = props;
     const { getPreviousEntry, getNextEntry } = useHighlightedEntry(results);
 
     return (
@@ -19,16 +19,19 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
         onKeyDown={(event) => {
           if (event.key === "ArrowUp") {
             const entry = getPreviousEntry();
-            setInputValue(entry);
+
+            onChange(entry);
           }
           if (event.key === "ArrowDown") {
             const entry = getNextEntry();
-            setInputValue(entry);
+
+            onChange(entry);
           }
         }}
         onChange={(event) => {
-          setInputValue(event.currentTarget.value);
+          onChange(event.currentTarget.value);
         }}
+        aria-activedescendant="group-0-option-0"
         {...options}
       />
     );

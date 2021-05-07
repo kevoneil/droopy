@@ -23,5 +23,5 @@ export const useHighlightedEntry = (results: string[]) => {
     return results[highlightedIndex + 1];
   };
 
-  return { getPreviousEntry, getNextEntry };
+  return { highlightedIndex, getPreviousEntry, getNextEntry };
 };
