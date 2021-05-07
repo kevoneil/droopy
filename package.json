@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel demo/index.html",
-    "test": "jest"
+    "test": "jest",
+    "prettier": "prettier"
   },
   "repository": {
     "type": "git",
