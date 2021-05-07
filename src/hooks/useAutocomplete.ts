@@ -1,11 +1,6 @@
 import { useHighlightedEntry } from "./useHighlighedEntry";
 
-interface Props {
-  results: string[];
-  children: JSX.Element | JSX.Element[];
-}
-
-export const useAutocomplete = ({ results }: Props) => {
+export const useAutocomplete = (results: string[]) => {
   const {
     getNextEntry,
     getPreviousEntry,
