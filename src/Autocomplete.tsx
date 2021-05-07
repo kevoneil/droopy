@@ -34,7 +34,6 @@ export const Autocomplete = () => {
         ref={inputRef}
         value={inputValue}
         onChange={setInputValue}
-        results={filteredResults}
       />
       {showDropdown && inputValue.length > 0 && (
         <Dropdown>

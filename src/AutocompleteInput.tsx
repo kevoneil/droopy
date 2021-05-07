@@ -4,13 +4,12 @@ import { useAutocomplete } from "./hooks";
 
 interface Props {
   value: string;
-  results: string[];
   onChange: (param: string) => void;
 }
 
 export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
-    const { results, onChange, ...options } = props;
+    const { onChange, ...options } = props;
     const {
       highlightedIndex,
       getNextEntry,
