@@ -6,27 +6,37 @@ import { Dropdown } from "./Dropdown";
 import { useShowDropdown } from "./hooks/useShowDropdown";
 import { AutocompleteContextProvider } from "./AutocompleteContextProvider";
 
+const results = {
+  recentSearches: ["beer", "hummus", "candy"],
+  trendingSearches: ["kale", "beer"],
+};
+
 export const Autocomplete = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState("");
   const showDropdown = useShowDropdown(inputRef);
-  const results = ["beer", "hummus", "candy"];
   const ariaGroup = "group-0";
 
   function getResults() {
     const inputValue = inputRef.current?.value;
 
-    if (!inputValue?.length) return [];
+    if (!inputValue?.length) return {};
 
-    return results.filter((result) => {
-      if (result.match(inputValue)) {
-        return result;
+    return Object.entries(results).reduce((acc, entry) => {
+      const [entryName, valueArray] = entry;
+
+      if (!valueArray.includes(inputValue)) {
+        return { ...acc };
       }
-    });
+
+      const newArray = valueArray.filter((s: string) => s.match("beer"));
+      return { ...acc, [entryName]: newArray };
+    }, {});
   }
 
   const filteredResults = useMemo(() => getResults(), [inputValue]);
-  const resultsString = `${filteredResults?.length || 0} results found`;
+  const flattenedResults = Object.values(filteredResults).flat();
+  const resultsString = `${flattenedResults?.length || 0} results found`;
 
   return (
     <AutocompleteContextProvider results={filteredResults}>
@@ -37,19 +47,22 @@ export const Autocomplete = () => {
       />
       {showDropdown && inputValue.length > 0 && (
         <Dropdown>
-          <AutocompleteList
-            headerText="Recent Entries"
-            ariaGroupHeader={`${ariaGroup}-header`}
-          >
-            {filteredResults.map((result, index) => (
-              <AutocompleteEntry
-                key={result}
-                id={`${ariaGroup}-option-${index}`}
-              >
-                {result}
-              </AutocompleteEntry>
-            ))}
-          </AutocompleteList>
+          {flattenedResults &&
+            Object.entries(filteredResults).map((entry) => {
+              const [entryName] = entry;
+              return (
+                <AutocompleteList
+                  headerText={
+                    entryName === "recentSearches"
+                      ? "Recent Searches"
+                      : "Popular Searches"
+                  }
+                  ariaGroupHeader={`${ariaGroup}-header`}
+                >
+                  <div>test</div>
+                </AutocompleteList>
+              );
+            })}
         </Dropdown>
       )}
       <div aria-live="assertive" className="hidden-text">

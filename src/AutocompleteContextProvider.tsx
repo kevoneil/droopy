@@ -11,7 +11,7 @@ export const AutocompleteContext = createContext<ContextReturnType>({
 });
 
 interface Props {
-  results: string[];
+  results: Record<string, string[]>;
   children: JSX.Element | JSX.Element[];
 }
 
