@@ -29,7 +29,7 @@ export const Autocomplete = () => {
   const resultsString = `${filteredResults?.length || 0} results found`;
 
   return (
-    <AutocompleteContextProvider results={results}>
+    <AutocompleteContextProvider results={filteredResults}>
       <AutocompleteInput
         ref={inputRef}
         value={inputValue}

@@ -1,15 +1,6 @@
-import { useHighlightedEntry } from "./useHighlighedEntry";
+import { useContext } from "react";
+import { AutocompleteContext } from "../AutocompleteContextProvider";
 
-export const useAutocomplete = (results: string[]) => {
-  const {
-    getNextEntry,
-    getPreviousEntry,
-    highlightedIndex,
-  } = useHighlightedEntry(results);
-
-  return {
-    getNextEntry,
-    getPreviousEntry,
-    highlightedIndex,
-  };
+export const useAutocomplete = () => {
+  return useContext(AutocompleteContext);
 };

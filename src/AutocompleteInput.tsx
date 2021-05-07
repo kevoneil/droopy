@@ -1,6 +1,6 @@
 import React, { forwardRef, HTMLProps } from "react";
 
-import { useHighlightedEntry } from "./hooks/useHighlighedEntry";
+import { useAutocomplete } from "./hooks";
 
 interface Props {
   value: string;
@@ -11,7 +11,7 @@ interface Props {
 export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
     const { results, onChange, ...options } = props;
-    const { getPreviousEntry, getNextEntry } = useHighlightedEntry(results);
+    const { getPreviousEntry, getNextEntry } = useAutocomplete();
 
     return (
       <input

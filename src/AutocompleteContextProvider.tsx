@@ -1,7 +1,9 @@
 import React, { createContext } from "react";
-import { useAutocomplete } from "./hooks";
+import { useHighlightedEntry } from "./hooks";
 
-const AutocompleteContext = createContext({});
+type ContextReturnType = ReturnType<typeof useHighlightedEntry> | {};
+
+export const AutocompleteContext = createContext<ContextReturnType>({});
 
 interface Props {
   results: string[];
@@ -9,10 +11,14 @@ interface Props {
 }
 
 export const AutocompleteContextProvider = ({ results, children }: Props) => {
-  const autocompleteProps = useAutocomplete(results);
+  const autocompleteProps = useHighlightedEntry(results);
 
   return (
-    <AutocompleteContext.Provider value={autocompleteProps}>
+    <AutocompleteContext.Provider
+      value={{
+        ...autocompleteProps,
+      }}
+    >
       {children}
     </AutocompleteContext.Provider>
   );
