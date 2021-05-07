@@ -7,6 +7,7 @@ export const AutocompleteContext = createContext<ContextReturnType>({
   highlightedIndex: -1,
   getPreviousEntry: () => "",
   getNextEntry: () => "",
+  resetHighlightedEntry: () => "",
 });
 
 interface Props {

@@ -23,5 +23,15 @@ export const useHighlightedEntry = (results: string[]) => {
     return results[highlightedIndex + 1];
   };
 
-  return { highlightedIndex, getPreviousEntry, getNextEntry };
+  const resetHighlightedEntry = () => {
+    setHighlightedIndex(-1);
+    return "";
+  };
+
+  return {
+    highlightedIndex,
+    getPreviousEntry,
+    resetHighlightedEntry,
+    getNextEntry,
+  };
 };

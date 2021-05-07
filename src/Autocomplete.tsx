@@ -36,7 +36,7 @@ export const Autocomplete = () => {
         onChange={setInputValue}
         results={filteredResults}
       />
-      {showDropdown && (
+      {showDropdown && inputValue.length > 0 && (
         <Dropdown>
           <AutocompleteList
             headerText="Recent Entries"

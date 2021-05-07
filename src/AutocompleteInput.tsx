@@ -11,7 +11,12 @@ interface Props {
 export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
     const { results, onChange, ...options } = props;
-    const { getNextEntry, getPreviousEntry } = useAutocomplete();
+    const {
+      highlightedIndex,
+      getNextEntry,
+      getPreviousEntry,
+      resetHighlightedEntry,
+    } = useAutocomplete();
 
     return (
       <input
@@ -27,11 +32,18 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
 
             onChange(entry);
           }
+
+          if (event.key === "Escape") {
+            onChange("");
+            resetHighlightedEntry();
+          }
         }}
         onChange={(event) => {
           onChange(event.currentTarget.value);
         }}
-        aria-activedescendant="group-0-option-0"
+        aria-activedescendant={
+          highlightedIndex >= 0 ? `group-0-option-${highlightedIndex}` : ""
+        }
         {...options}
       />
     );
