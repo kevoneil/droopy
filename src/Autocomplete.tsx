@@ -57,9 +57,11 @@ export const Autocomplete = () => {
                       ? "Recent Searches"
                       : "Popular Searches"}
                   </h3>
-                  <AutocompleteList aria-labelledby={headerId}>
-                    {value.map((s, optionIndex) => (
+                  <AutocompleteList key={entryName} aria-labelledby={headerId}>
+                    {(value as string[]).map((s, optionIndex) => (
                       <AutocompleteEntry
+                        key={`${entry}-s`}
+                        isHighlighted="highlighted-entry"
                         id={`group-${entryName}-option-${optionIndex}`}
                       >
                         {s}
