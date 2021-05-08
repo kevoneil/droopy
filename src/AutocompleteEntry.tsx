@@ -2,24 +2,27 @@ import React, { HTMLProps } from "react";
 import { useAutocomplete } from "./hooks";
 
 interface Props extends HTMLProps<HTMLLIElement> {
-  isHighlighted: string | {};
+  highlightedCSS?: {};
+  highlightedClassName?: string;
   children: string;
 }
 
-export const AutocompleteEntry = ({ isHighlighted, children, id }: Props) => {
+export const AutocompleteEntry = ({
+  highlightedCSS,
+  highlightedClassName,
+  children,
+  id,
+}: Props) => {
   const { activeGroup, activeGroupIndex } = useAutocomplete();
   const highlightedId = `group-${activeGroup}-option-${activeGroupIndex}`;
+  const isHighlighted = id === highlightedId;
 
   return (
     <li
-      {...(typeof isHighlighted === "object" ? isHighlighted : {})}
-      className={
-        id === highlightedId && typeof isHighlighted === "string"
-          ? isHighlighted
-          : ""
-      }
-      role="option"
       id={id}
+      role="option"
+      {...(isHighlighted && highlightedCSS ? highlightedCSS : {})}
+      className={isHighlighted ? highlightedClassName : ""}
     >
       {children}
     </li>

@@ -47,28 +47,31 @@ export const Autocomplete = () => {
       {showDropdown && inputValue.length > 0 && (
         <Dropdown>
           {flattenedResults &&
-            Object.entries(filteredResults).map((entry, index) => {
+            Object.entries(filteredResults).map((entry, listIndex) => {
               const [entryName, value] = entry;
               const headerId = `group-${entryName}-header`;
               return (
-                <>
+                <React.Fragment key={`${entryName}-${listIndex}-fragment`}>
                   <h3 id={headerId}>
                     {entryName === "recentSearches"
                       ? "Recent Searches"
                       : "Popular Searches"}
                   </h3>
-                  <AutocompleteList key={entryName} aria-labelledby={headerId}>
+                  <AutocompleteList
+                    key={`${entryName}-${listIndex}`}
+                    aria-labelledby={headerId}
+                  >
                     {(value as string[]).map((s, optionIndex) => (
                       <AutocompleteEntry
-                        key={`${entry}-s`}
-                        isHighlighted="highlighted-entry"
+                        key={`${entry}-${optionIndex}`}
+                        highlightedClassName="highlighted-entry"
                         id={`group-${entryName}-option-${optionIndex}`}
                       >
                         {s}
                       </AutocompleteEntry>
                     ))}
                   </AutocompleteList>
-                </>
+                </React.Fragment>
               );
             })}
         </Dropdown>
