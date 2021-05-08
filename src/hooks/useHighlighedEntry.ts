@@ -9,6 +9,7 @@ export const useHighlightedEntry = (results: Record<string, string[]>) => {
   });
 
   const [activeGroup, setActiveGroup] = useState("");
+  const [activeGroupIndex, setActiveGroupIndex] = useState(0);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const flattenedResults = Object.values(newResults);
 
@@ -32,12 +33,15 @@ export const useHighlightedEntry = (results: Record<string, string[]>) => {
     if (highlightedIndex + 1 >= flattenedResults?.length) {
       setHighlightedIndex(0);
       const result = flattenedResults?.[0].pop().split("-");
-      setActiveGroup(result?.[1] || "");
+      const activeGroup = result?.[1] || "";
+      setActiveGroup(activeGroup);
+      setActiveGroupIndex(results?.[activeGroup]?.indexOf(result?.[0]));
       return result?.[0];
     }
 
     const result = flattenedResults?.[highlightedIndex + 1].pop().split("-");
     setActiveGroup(result?.[1] || "");
+    setActiveGroupIndex(results?.[activeGroup]?.indexOf(result?.[0]));
     setHighlightedIndex(highlightedIndex + 1);
     return result?.[0];
   };
@@ -50,6 +54,7 @@ export const useHighlightedEntry = (results: Record<string, string[]>) => {
 
   return {
     activeGroup,
+    activeGroupIndex,
     highlightedIndex,
     getPreviousEntry,
     resetHighlightedEntry,

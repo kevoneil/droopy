@@ -12,6 +12,7 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
     const { onChange, ...options } = props;
     const {
       activeGroup,
+      activeGroupIndex,
       highlightedIndex,
       getNextEntry,
       getPreviousEntry,
@@ -42,7 +43,9 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
           onChange(event.currentTarget.value);
         }}
         aria-activedescendant={
-          highlightedIndex >= 0 ? `group-0-option-${highlightedIndex}` : ""
+          highlightedIndex >= 0
+            ? `group-${activeGroup}-option-${activeGroupIndex}`
+            : ""
         }
         {...options}
       />

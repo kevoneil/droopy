@@ -15,7 +15,6 @@ export const Autocomplete = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState("");
   const showDropdown = useShowDropdown(inputRef);
-  const ariaGroup = "group-0";
 
   function getResults() {
     const inputValue = inputRef.current?.value;
@@ -50,7 +49,7 @@ export const Autocomplete = () => {
           {flattenedResults &&
             Object.entries(filteredResults).map((entry, index) => {
               const [entryName, value] = entry;
-              const headerId = `group-${index}-header`;
+              const headerId = `group-${entryName}-header`;
               return (
                 <>
                   <h3 id={headerId}>
@@ -61,7 +60,7 @@ export const Autocomplete = () => {
                   <AutocompleteList aria-labelledby={headerId}>
                     {value.map((s, optionIndex) => (
                       <AutocompleteEntry
-                        id={`group-${index}-option-${optionIndex}`}
+                        id={`group-${entryName}-option-${optionIndex}`}
                       >
                         {s}
                       </AutocompleteEntry>
