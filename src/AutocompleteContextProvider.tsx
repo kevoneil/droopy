@@ -4,6 +4,8 @@ import { useHighlightedEntry } from "./hooks";
 type ContextReturnType = ReturnType<typeof useHighlightedEntry>;
 
 export const AutocompleteContext = createContext<ContextReturnType>({
+  activeGroup: "",
+  activeGroupIndex: -1,
   highlightedIndex: -1,
   getPreviousEntry: () => "",
   getNextEntry: () => "",

@@ -11,12 +11,7 @@ test("Autocomplete does not break", () => {
   expect(() =>
     render(
       <>
-        <AutocompleteInput
-          ref={() => {}}
-          value="test"
-          setInputValue={() => {}}
-          results={results}
-        />
+        <AutocompleteInput ref={() => {}} value="test" onChange={() => {}} />
         <AutocompleteList>
           <AutocompleteEntry>test</AutocompleteEntry>
         </AutocompleteList>
