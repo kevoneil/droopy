@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLProps } from "react";
 
 import { useAutocomplete } from "./hooks";
 
-interface Props {
+interface Props extends React.HTMLProps<HTMLInputElement> {
   value: string;
   onChange: (param: string) => void;
 }

@@ -10,3 +10,28 @@ ul {
   background: darkgray;
   color: white;
 }
+
+form {
+  width: 50vw;
+}
+
+.droopy-container {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  margin-left: 25vw;
+  margin-top: 25vw;
+}
+
+.droopy-input {
+  width: 50vw;
+  padding: 10px;
+  border-color: lightgray;
+  border-radius: 8px;
+}
+
+.droopy-dropdown {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+}

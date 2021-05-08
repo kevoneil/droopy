@@ -39,46 +39,50 @@ export const Autocomplete = () => {
 
   return (
     <AutocompleteContextProvider results={filteredResults}>
-      <AutocompleteInput
-        ref={inputRef}
-        value={inputValue}
-        onChange={setInputValue}
-      />
-      {showDropdown && inputValue.length > 0 && (
-        <Dropdown>
-          {flattenedResults &&
-            Object.entries(filteredResults).map((entry, listIndex) => {
-              const [entryName, value] = entry;
-              const headerId = `group-${entryName}-header`;
-              return (
-                <React.Fragment key={`${entryName}-${listIndex}-fragment`}>
-                  <h3 id={headerId}>
-                    {entryName === "recentSearches"
-                      ? "Recent Searches"
-                      : "Popular Searches"}
-                  </h3>
-                  <AutocompleteList
-                    key={`${entryName}-${listIndex}`}
-                    aria-labelledby={headerId}
-                  >
-                    {(value as string[]).map((s, optionIndex) => (
-                      <AutocompleteEntry
-                        key={`${entry}-${optionIndex}`}
-                        highlightedClassName="highlighted-entry"
-                        id={`group-${entryName}-option-${optionIndex}`}
-                      >
-                        {s}
-                      </AutocompleteEntry>
-                    ))}
-                  </AutocompleteList>
-                </React.Fragment>
-              );
-            })}
-        </Dropdown>
-      )}
-      <div aria-live="assertive" className="hidden-text">
-        {resultsString}
-      </div>
+      <form role="search" className="droopy-container">
+        <AutocompleteInput
+          ref={inputRef}
+          value={inputValue}
+          onChange={setInputValue}
+          className="droopy-input"
+        />
+        {showDropdown && inputValue.length > 0 && (
+          <Dropdown className="droopy-dropdown">
+            {flattenedResults &&
+              Object.entries(filteredResults).map((entry, listIndex) => {
+                const [entryName, value] = entry;
+                const headerId = `group-${entryName}-header`;
+
+                return (
+                  <React.Fragment key={`${entryName}-${listIndex}-fragment`}>
+                    <h3 id={headerId}>
+                      {entryName === "recentSearches"
+                        ? "Recent Searches"
+                        : "Popular Searches"}
+                    </h3>
+                    <AutocompleteList
+                      key={`${entryName}-${listIndex}`}
+                      aria-labelledby={headerId}
+                    >
+                      {(value as string[]).map((s, optionIndex) => (
+                        <AutocompleteEntry
+                          key={`${entry}-${optionIndex}`}
+                          highlightedClassName="highlighted-entry"
+                          id={`group-${entryName}-option-${optionIndex}`}
+                        >
+                          {s}
+                        </AutocompleteEntry>
+                      ))}
+                    </AutocompleteList>
+                  </React.Fragment>
+                );
+              })}
+          </Dropdown>
+        )}
+        <div aria-live="assertive" className="hidden-text">
+          {resultsString}
+        </div>
+      </form>
     </AutocompleteContextProvider>
   );
 };
