@@ -28,7 +28,7 @@ export const Autocomplete = () => {
         return { ...acc };
       }
 
-      const newArray = valueArray.filter((s: string) => s.match("beer"));
+      const newArray = valueArray.filter((s: string) => s.match(inputValue));
       return { ...acc, [entryName]: newArray };
     }, {});
   }
