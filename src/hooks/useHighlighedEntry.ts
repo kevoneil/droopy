@@ -13,37 +13,27 @@ export const useHighlightedEntry = (results: Record<string, string[]>) => {
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const flattenedResults = Object.values(newResults);
 
+  const getNewEntry = (newIndex: number) => {
+    const result = flattenedResults?.[newIndex]?.pop().split("-");
+    setHighlightedIndex(newIndex);
+    setActiveGroup(result?.[1]);
+    return result?.[0] || "";
+  };
+
   const getPreviousEntry = () => {
     if (highlightedIndex <= 0) {
-      const result = flattenedResults?.[flattenedResults?.length - 1]
-        ?.pop()
-        .split("-");
-      setHighlightedIndex(flattenedResults?.length - 1);
-      setActiveGroup(result?.[1]);
-      return result?.[0];
+      return getNewEntry(flattenedResults?.length - 1);
     }
 
-    const result = flattenedResults?.[highlightedIndex - 1]?.pop()?.split("-");
-    setActiveGroup(result?.[1] || "");
-    setHighlightedIndex(highlightedIndex - 1);
-    return result[0];
+    return getNewEntry(highlightedIndex - 1);
   };
 
   const getNextEntry = () => {
     if (highlightedIndex + 1 >= flattenedResults?.length) {
-      setHighlightedIndex(0);
-      const result = flattenedResults?.[0].pop().split("-");
-      const activeGroup = result?.[1] || "";
-      setActiveGroup(activeGroup);
-      setActiveGroupIndex(results?.[activeGroup]?.indexOf(result?.[0]));
-      return result?.[0];
+      return getNewEntry(0);
     }
 
-    const result = flattenedResults?.[highlightedIndex + 1].pop().split("-");
-    setActiveGroup(result?.[1] || "");
-    setActiveGroupIndex(results?.[activeGroup]?.indexOf(result?.[0]));
-    setHighlightedIndex(highlightedIndex + 1);
-    return result?.[0];
+    return getNewEntry(highlightedIndex + 1);
   };
 
   const resetHighlightedEntry = () => {
