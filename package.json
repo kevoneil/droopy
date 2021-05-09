@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A better, more accessible, dropdown menu",
   "scripts": {
-    "start": "parcel docs/index.html",
+    "start": "parcel index.html",
     "test": "jest",
     "prettier": "prettier --write .",
     "build:docs": "parcel build index.html --dist-dir docs --public-url ."

@@ -42,14 +42,8 @@ form {
   outline: none;
 }
 
-.droopy-input:focus-visible::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  top: 0;
-  left: 0;
-  border: 1px solid green;
-  z-index: 1;
+.droopy-input:focus-visible {
+  border: 1px solid black;
 }
 
 .droopy-dropdown {
@@ -79,5 +73,7 @@ form {
 }
 
 .hidden-text {
-  display: none;
+  width: 0;
+  position: absolute;
+  top: -99999px;
 }

@@ -8,6 +8,7 @@ const app = () => (
   <div className="app-container">
     <h1>Droopy Dropdown</h1>
     <p>An toolkit for building a11y friendly dropdown components</p>
+    <p>Start by typing 'beer' into the search bar</p>
     <Autocomplete />
   </div>
 );
