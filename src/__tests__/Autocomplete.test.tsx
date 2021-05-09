@@ -66,4 +66,14 @@ describe("demo", () => {
 
     expect(screen.getByText(/kale/i)).toBeDefined();
   });
+
+  it("renders correct number of results found", () => {
+    demoMount();
+
+    const input = screen.getByPlaceholderText(placeholderText);
+
+    fireEvent.change(input, { target: { value: "beer" } });
+
+    expect(screen.getByText(/8 results found/i)).toBeDefined();
+  });
 });
