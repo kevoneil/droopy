@@ -10,8 +10,8 @@ import {
 } from "../src";
 
 const results = {
-  recentSearches: ["beer", "hummus", "candy"],
-  trendingSearches: ["kale", "beer"],
+  recentSearches: ["beer", "hummus", "candy", "chocolate", "cookies"],
+  trendingSearches: ["kale", "beer", "cake"],
 };
 
 export const Autocomplete = () => {
@@ -19,29 +19,11 @@ export const Autocomplete = () => {
   const [inputValue, setInputValue] = useState("");
   const showDropdown = useShowDropdown(inputRef);
 
-  function getResults() {
-    const inputValue = inputRef.current?.value;
-
-    if (!inputValue?.length) return {};
-
-    return Object.entries(results).reduce((acc, entry) => {
-      const [entryName, valueArray] = entry;
-
-      if (!valueArray.includes(inputValue)) {
-        return { ...acc };
-      }
-
-      const newArray = valueArray.filter((s: string) => s.match(inputValue));
-      return { ...acc, [entryName]: newArray };
-    }, {});
-  }
-
-  const filteredResults = useMemo(() => getResults(), [inputValue]);
-  const flattenedResults = Object.values(filteredResults).flat();
+  const flattenedResults = Object.values(results).flat();
   const resultsString = `${flattenedResults?.length || 0} results found`;
 
   return (
-    <AutocompleteContextProvider results={filteredResults}>
+    <AutocompleteContextProvider results={results}>
       <form role="search" className="droopy-container">
         <AutocompleteInput
           ref={inputRef}
@@ -52,7 +34,7 @@ export const Autocomplete = () => {
         {showDropdown && inputValue.length > 0 && flattenedResults?.length > 0 && (
           <AutocompleteDropdown className="droopy-dropdown">
             {flattenedResults &&
-              Object.entries(filteredResults).map((entry, listIndex) => {
+              Object.entries(results).map((entry, listIndex) => {
                 const [entryName, value] = entry;
                 const headerId = `group-${entryName}-header`;
 

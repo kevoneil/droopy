@@ -11,12 +11,14 @@ export const useHighlightedEntry = (results: Record<string, string[]>) => {
   const [activeGroup, setActiveGroup] = useState("");
   const [activeGroupIndex, setActiveGroupIndex] = useState(0);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
-  const flattenedResults = Object.values(newResults);
+  const flattenedResults = Object.values(newResults).flat();
 
   const getNewEntry = (newIndex: number) => {
-    const result = flattenedResults?.[newIndex]?.pop().split("-");
+    const result = flattenedResults?.[newIndex]?.split("-");
+    const activeGroupGetter = result?.[1] || "";
+    setActiveGroup(activeGroupGetter);
     setHighlightedIndex(newIndex);
-    setActiveGroup(result?.[1]);
+    setActiveGroupIndex(results?.[activeGroupGetter]?.indexOf(result[0]));
     return result?.[0] || "";
   };
 
