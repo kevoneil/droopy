@@ -4,12 +4,12 @@ import { useAutocomplete } from "./hooks";
 
 interface Props extends React.HTMLProps<HTMLInputElement> {
   value: string;
-  onChange: (param: string) => void;
+  onInputChange: (param: string) => void;
 }
 
 export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
-    const { onChange, ...options } = props;
+    const { onInputChange, ...options } = props;
     const {
       activeGroup,
       activeGroupIndex,
@@ -27,22 +27,22 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
             event.preventDefault();
             const entry = getPreviousEntry();
 
-            onChange(entry);
+            onInputChange(entry);
           }
           if (event.key === "ArrowDown") {
             event.preventDefault();
             const entry = getNextEntry();
 
-            onChange(entry);
+            onInputChange(entry);
           }
 
           if (event.key === "Escape") {
-            onChange("");
+            onInputChange("");
             resetHighlightedEntry();
           }
         }}
         onChange={(event) => {
-          onChange(event.currentTarget.value);
+          onInputChange(event.currentTarget.value);
         }}
         aria-activedescendant={
           highlightedIndex >= 0

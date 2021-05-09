@@ -43,7 +43,7 @@ export const Autocomplete = () => {
         <AutocompleteInput
           ref={inputRef}
           value={inputValue}
-          onChange={setInputValue}
+          onInputChange={setInputValue}
           className="droopy-input"
         />
         {showDropdown && inputValue.length > 0 && flattenedResults?.length > 0 && (
