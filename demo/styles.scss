@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: Arial;
 }
 
 ul {
@@ -7,8 +8,7 @@ ul {
 }
 
 .highlighted-entry {
-  background: darkgray;
-  color: white;
+  background: #e4e4e4;
 }
 
 form {
@@ -24,14 +24,48 @@ form {
 }
 
 .droopy-input {
+  position: relative;
   width: 50vw;
   padding: 10px;
+  font-size: 18px;
   border-color: lightgray;
   border-radius: 8px;
+  border-style: solid;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}
+
+.droopy-input:focus {
+  outline: none;
+}
+
+.droopy-input:focus-visible::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  top: 0;
+  left: 0;
+  border: 1px solid green;
 }
 
 .droopy-dropdown {
   position: absolute;
   width: 100%;
-  top: 100%;
+  top: 96%;
+  padding-bottom: 16px;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}
+
+.dropdown-entry-list {
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-entry-header {
+  padding: 0 8px;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.dropdown-entry {
+  padding: 8px;
 }

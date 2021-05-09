@@ -10,6 +10,7 @@ interface Props extends HTMLProps<HTMLLIElement> {
 export const AutocompleteEntry = ({
   highlightedCSS,
   highlightedClassName,
+  className,
   children,
   id,
   ...options
@@ -22,7 +23,9 @@ export const AutocompleteEntry = ({
     <li
       id={id}
       role="option"
-      className={isHighlighted ? highlightedClassName : ""}
+      className={
+        isHighlighted ? `${className} ${highlightedClassName}` : className
+      }
       {...(isHighlighted && highlightedCSS ? highlightedCSS : {})}
       {...options}
     >

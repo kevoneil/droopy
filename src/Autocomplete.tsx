@@ -46,7 +46,7 @@ export const Autocomplete = () => {
           onChange={setInputValue}
           className="droopy-input"
         />
-        {showDropdown && inputValue.length > 0 && (
+        {showDropdown && inputValue.length > 0 && flattenedResults?.length > 0 && (
           <Dropdown className="droopy-dropdown">
             {flattenedResults &&
               Object.entries(filteredResults).map((entry, listIndex) => {
@@ -55,7 +55,7 @@ export const Autocomplete = () => {
 
                 return (
                   <React.Fragment key={`${entryName}-${listIndex}-fragment`}>
-                    <h3 id={headerId}>
+                    <h3 id={headerId} className="dropdown-entry-header">
                       {entryName === "recentSearches"
                         ? "Recent Searches"
                         : "Popular Searches"}
@@ -63,9 +63,11 @@ export const Autocomplete = () => {
                     <AutocompleteList
                       key={`${entryName}-${listIndex}`}
                       aria-labelledby={headerId}
+                      className="dropdown-entry-list"
                     >
                       {(value as string[]).map((s, optionIndex) => (
                         <AutocompleteEntry
+                          className="dropdown-entry"
                           key={`${entry}-${optionIndex}`}
                           highlightedClassName="highlighted-entry"
                           id={`group-${entryName}-option-${optionIndex}`}
