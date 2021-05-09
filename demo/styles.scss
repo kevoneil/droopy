@@ -45,14 +45,18 @@ form {
   top: 0;
   left: 0;
   border: 1px solid green;
+  z-index: 1;
 }
 
 .droopy-dropdown {
   position: absolute;
-  width: 100%;
-  top: 96%;
+  width: 99%;
+  top: 90%;
   padding-bottom: 16px;
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid lightgray;
+  border-top: none;
 }
 
 .dropdown-entry-list {

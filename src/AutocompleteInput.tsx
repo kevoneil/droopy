@@ -24,11 +24,13 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
         ref={ref}
         onKeyDown={(event) => {
           if (event.key === "ArrowUp") {
+            event.preventDefault();
             const entry = getPreviousEntry();
 
             onChange(entry);
           }
           if (event.key === "ArrowDown") {
+            event.preventDefault();
             const entry = getNextEntry();
 
             onChange(entry);
