@@ -76,4 +76,22 @@ describe("demo", () => {
 
     expect(screen.getByText(/8 results found/i)).toBeDefined();
   });
+
+  it("clears input when user hits escape key", () => {
+    demoMount();
+
+    const input = screen.getByPlaceholderText(placeholderText);
+
+    fireEvent.change(input, { target: { value: "beer" } });
+
+    const newInput = screen.getByDisplayValue(/beer/i);
+
+    fireEvent.keyDown(newInput, {
+      key: "Escape",
+      code: "Escape",
+    });
+
+    expect(screen.queryByText(/beer/i)).toBeNull();
+    expect(screen.getByText(/0 results found/i)).toBeDefined();
+  });
 });

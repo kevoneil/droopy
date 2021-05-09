@@ -7,6 +7,7 @@ import {
   AutocompleteDropdown,
   useShowDropdown,
   AutocompleteContextProvider,
+  useAutocomplete,
 } from "../src";
 
 const results = {
@@ -23,9 +24,10 @@ export const Autocomplete = () => {
   const resultsString = showDropdown
     ? `${flattenedResults?.length} results found`
     : "0 results found";
+  const finalResults = inputValue.length > 0 ? results : {};
 
   return (
-    <AutocompleteContextProvider results={results}>
+    <AutocompleteContextProvider results={finalResults}>
       <div className="droopy-container">
         <AutocompleteInput
           placeholder="Search..."
