@@ -58,7 +58,11 @@ export const Autocomplete = () => {
 
                 return (
                   <React.Fragment key={`${entryName}-${listIndex}-fragment`}>
-                    <h3 id={headerId} className="dropdown-entry-header">
+                    <h3
+                      id={headerId}
+                      className="dropdown-entry-header"
+                      aria-hidden
+                    >
                       {entryName === "recentSearches"
                         ? "Recent Searches"
                         : "Popular Searches"}
