@@ -22,7 +22,6 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
     return (
       <input
         name="search"
-        type="search"
         ref={ref}
         onKeyDown={(event) => {
           if (event.key === "ArrowUp") {

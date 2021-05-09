@@ -20,13 +20,13 @@ export const Autocomplete = () => {
   const showDropdown = useShowDropdown(inputRef);
 
   const flattenedResults = Object.values(results).flat();
-  const resultsString = `${
-    (flattenedResults?.length && showDropdown) || 0
-  } results found`;
+  const resultsString = showDropdown
+    ? `${flattenedResults?.length} results found`
+    : "0 results found";
 
   return (
     <AutocompleteContextProvider results={results}>
-      <form role="search" className="droopy-container">
+      <div className="droopy-container">
         <AutocompleteInput
           placeholder="Search..."
           ref={inputRef}
@@ -43,7 +43,11 @@ export const Autocomplete = () => {
 
                 return (
                   <React.Fragment key={`${entryName}-${listIndex}-fragment`}>
-                    <h3 id={headerId} className="dropdown-entry-header">
+                    <h3
+                      id={headerId}
+                      className="dropdown-entry-header"
+                      aria-hidden
+                    >
                       {entryName === "recentSearches"
                         ? "Recent Searches"
                         : "Popular Searches"}
@@ -72,7 +76,7 @@ export const Autocomplete = () => {
         <div aria-live="assertive" className="hidden-text">
           {resultsString}
         </div>
-      </form>
+      </div>
     </AutocompleteContextProvider>
   );
 };
