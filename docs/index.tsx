@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { Autocomplete } from "./Autocomplete";
-import "./styles.scss";
 
 const domContainer = document.querySelector("#app");
 

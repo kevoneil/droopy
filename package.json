@@ -5,7 +5,8 @@
   "scripts": {
     "start": "parcel demo/index.html",
     "test": "jest",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "build:docs": "parcel build docs/index.html --dist-dir docs --public-url ."
   },
   "repository": {
     "type": "git",

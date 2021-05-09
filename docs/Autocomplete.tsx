@@ -1,10 +1,13 @@
 import React, { useState, useRef, useMemo } from "react";
-import { AutocompleteInput } from "./AutocompleteInput";
-import { AutocompleteList } from "./AutocompleteList";
-import { AutocompleteEntry } from "./AutocompleteEntry";
-import { Dropdown } from "./Dropdown";
-import { useShowDropdown } from "./hooks/useShowDropdown";
-import { AutocompleteContextProvider } from "./AutocompleteContextProvider";
+
+import {
+  AutocompleteList,
+  AutocompleteInput,
+  AutocompleteEntry,
+  AutocompleteDropdown,
+  useShowDropdown,
+  AutocompleteContextProvider,
+} from "../src";
 
 const results = {
   recentSearches: ["beer", "hummus", "candy"],
@@ -47,7 +50,7 @@ export const Autocomplete = () => {
           className="droopy-input"
         />
         {showDropdown && inputValue.length > 0 && flattenedResults?.length > 0 && (
-          <Dropdown className="droopy-dropdown">
+          <AutocompleteDropdown className="droopy-dropdown">
             {flattenedResults &&
               Object.entries(filteredResults).map((entry, listIndex) => {
                 const [entryName, value] = entry;
@@ -79,7 +82,7 @@ export const Autocomplete = () => {
                   </React.Fragment>
                 );
               })}
-          </Dropdown>
+          </AutocompleteDropdown>
         )}
         <div aria-live="assertive" className="hidden-text">
           {resultsString}

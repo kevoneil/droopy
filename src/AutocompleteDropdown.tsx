@@ -6,7 +6,7 @@ interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-export const Dropdown = (props: Props) => {
+export const AutocompleteDropdown = (props: Props) => {
   const { children, ...options } = props;
 
   return (
