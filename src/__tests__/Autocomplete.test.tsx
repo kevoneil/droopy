@@ -89,4 +89,45 @@ describe("demo", () => {
     expect(screen.queryByText(/beer/i)).toBeNull();
     expect(screen.getByText(/0 results found/i)).toBeDefined();
   });
+
+  it("fills in input field with first entry if user presses down key", () => {
+    demoMount();
+
+    const input = screen.getByPlaceholderText(placeholderText);
+
+    fireEvent.change(input, { target: { value: "beer" } });
+
+    const newInput = screen.getByDisplayValue(/beer/i);
+
+    fireEvent.keyDown(newInput, {
+      key: "KeyDown",
+      code: "KeyDown",
+    });
+
+    expect(screen.getByDisplayValue(/beer/i)).toBeDefined();
+  });
+
+  it("fills in input field with second entry if user presses down key", () => {
+    demoMount();
+
+    const input = screen.getByPlaceholderText(placeholderText);
+
+    fireEvent.change(input, { target: { value: "bread" } });
+
+    const newInput = screen.getByDisplayValue(/bread/i);
+
+    fireEvent.keyDown(newInput, {
+      key: "ArrowDown",
+      code: "ArrowDown",
+    });
+
+    expect(screen.getByDisplayValue(/beer/i)).toBeDefined();
+
+    fireEvent.keyDown(newInput, {
+      key: "ArrowDown",
+      code: "ArrowDown",
+    });
+
+    expect(screen.getByDisplayValue(/hummus/i)).toBeDefined();
+  });
 });
