@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  fireEvent,
-  getByPlaceholderText,
-  render,
-  screen,
-} from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import {
   AutocompleteInput,
