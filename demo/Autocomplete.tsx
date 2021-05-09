@@ -20,11 +20,12 @@ export const Autocomplete = () => {
   const [inputValue, setInputValue] = useState("");
   const showDropdown = useShowDropdown(inputRef);
 
-  const flattenedResults = Object.values(results).flat();
-  const resultsString = showDropdown
-    ? `${flattenedResults?.length} results found`
-    : "0 results found";
   const finalResults = inputValue.length > 0 ? results : {};
+  const flattenedResults = Object.values(finalResults).flat();
+  const resultsString =
+    flattenedResults && showDropdown
+      ? `${flattenedResults?.length} results found`
+      : "0 results found";
 
   return (
     <AutocompleteContextProvider results={finalResults}>
