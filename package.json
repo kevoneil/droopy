@@ -2,7 +2,6 @@
   "name": "droopy",
   "version": "1.0.0",
   "description": "A better, more accessible, dropdown menu",
-  "main": "index.js",
   "scripts": {
     "start": "parcel demo/index.html",
     "test": "jest",
