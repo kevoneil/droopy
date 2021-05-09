@@ -10,7 +10,11 @@ describe("happy path", () => {
     expect(() =>
       render(
         <>
-          <AutocompleteInput ref={() => {}} value="test" onChange={() => {}} />
+          <AutocompleteInput
+            ref={() => {}}
+            value="test"
+            onInputChange={() => {}}
+          />
           <AutocompleteList>
             <AutocompleteEntry>test</AutocompleteEntry>
           </AutocompleteList>
