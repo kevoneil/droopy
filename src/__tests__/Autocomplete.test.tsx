@@ -1,25 +1,69 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import {
+  fireEvent,
+  getByPlaceholderText,
+  render,
+  screen,
+} from "@testing-library/react";
 
-import { AutocompleteInput } from "../AutocompleteInput";
-import { AutocompleteList } from "../AutocompleteList";
-import { AutocompleteEntry } from "../AutocompleteEntry";
+import {
+  AutocompleteInput,
+  AutocompleteList,
+  AutocompleteEntry,
+  AutocompleteContextProvider,
+} from "../";
+import { Autocomplete } from "../../demo/Autocomplete";
+
+const placeholderText = "Search...";
+
+const results = {
+  recentSearches: ["detergent", "potato chips", "hummus", "beer"],
+  trendingSearches: ["beer", "candy", "marshmellows"],
+};
+
+const mount = () =>
+  render(
+    <AutocompleteContextProvider results={results}>
+      <AutocompleteInput
+        ref={() => {}}
+        value="test"
+        onInputChange={() => {}}
+        placeholder={placeholderText}
+      />
+      <AutocompleteList>
+        <AutocompleteEntry>test</AutocompleteEntry>
+      </AutocompleteList>
+    </AutocompleteContextProvider>
+  );
+
+const demoMount = () => render(<Autocomplete />);
 
 describe("happy path", () => {
-  test("Autocomplete does not break when composing", () => {
-    expect(() =>
-      render(
-        <>
-          <AutocompleteInput
-            ref={() => {}}
-            value="test"
-            onInputChange={() => {}}
-          />
-          <AutocompleteList>
-            <AutocompleteEntry>test</AutocompleteEntry>
-          </AutocompleteList>
-        </>
-      )
-    ).not.toThrow();
+  it("Autocomplete does not break when composing", () => {
+    expect(() => mount()).not.toThrow();
+  });
+
+  it("renders input", () => {
+    mount();
+
+    expect(screen.getByPlaceholderText(placeholderText)).toBeDefined();
+  });
+});
+
+describe("demo", () => {
+  it("renders 0 results found", () => {
+    demoMount();
+
+    expect(screen.getByText(/0 results found/i)).toBeDefined();
+  });
+
+  it("renders value and brings up dropdown", () => {
+    demoMount();
+
+    const input = screen.getByPlaceholderText(placeholderText);
+
+    fireEvent.change(input, { target: { value: "beer" } });
+
+    expect(screen.getByText(/kale/i)).toBeDefined();
   });
 });

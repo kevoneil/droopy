@@ -20,12 +20,15 @@ export const Autocomplete = () => {
   const showDropdown = useShowDropdown(inputRef);
 
   const flattenedResults = Object.values(results).flat();
-  const resultsString = `${flattenedResults?.length || 0} results found`;
+  const resultsString = `${
+    (flattenedResults?.length && showDropdown) || 0
+  } results found`;
 
   return (
     <AutocompleteContextProvider results={results}>
       <form role="search" className="droopy-container">
         <AutocompleteInput
+          placeholder="Search..."
           ref={inputRef}
           value={inputValue}
           onInputChange={setInputValue}
