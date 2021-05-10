@@ -31,8 +31,9 @@ export const Autocomplete = () => {
 
   return (
     <AutocompleteContextProvider results={finalResults}>
-      <div className="droopy-container">
+      <form action="." role="search" className="droopy-container">
         <AutocompleteInput
+          type="search"
           placeholder="Search..."
           ref={inputRef}
           value={inputValue}
@@ -82,9 +83,9 @@ export const Autocomplete = () => {
               })}
           </AutocompleteDropdown>
         )}
-        <div aria-live="assertive" className="hidden-text">
-          {resultsString}
-        </div>
+      </form>
+      <div aria-live="assertive" className="hidden-text">
+        {resultsString}
       </div>
     </AutocompleteContextProvider>
   );
