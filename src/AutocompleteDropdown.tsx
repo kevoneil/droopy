@@ -1,6 +1,6 @@
 import React from "react";
 
-interface Props {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   styles?: {};
   children: JSX.Element | JSX.Element[];

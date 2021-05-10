@@ -46,6 +46,7 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
         onChange={(event) => {
           onInputChange(event.currentTarget.value);
         }}
+        aria-haspopup="listbox"
         aria-activedescendant={
           highlightedIndex >= 0
             ? `group-${activeGroup}-option-${activeGroupIndex}`

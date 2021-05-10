@@ -15,6 +15,8 @@ const results = {
   trendingSearches: ["kale", "beer", "cake"],
 };
 
+const DROPDOWN_ID = "droopy-dropdown";
+
 export const Autocomplete = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState("");
@@ -35,10 +37,14 @@ export const Autocomplete = () => {
           ref={inputRef}
           value={inputValue}
           onInputChange={setInputValue}
+          autoCapitalize="off"
+          autoCorrect="off"
+          aria-controls={DROPDOWN_ID}
+          aria-expanded={showDropdown && flattenedResults.length > 0}
           className="droopy-input"
         />
         {showDropdown && inputValue.length > 0 && flattenedResults?.length > 0 && (
-          <AutocompleteDropdown className="droopy-dropdown">
+          <AutocompleteDropdown id={DROPDOWN_ID} className="droopy-dropdown">
             {flattenedResults &&
               Object.entries(results).map((entry, listIndex) => {
                 const [entryName, value] = entry;
