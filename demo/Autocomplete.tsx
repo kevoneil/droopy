@@ -33,7 +33,6 @@ export const Autocomplete = () => {
     <AutocompleteContextProvider results={finalResults}>
       <form action="." role="search" className="droopy-container">
         <AutocompleteInput
-          type="search"
           placeholder="Search..."
           ref={inputRef}
           value={inputValue}
