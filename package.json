@@ -1,12 +1,12 @@
 {
   "name": "droopy",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A better, more accessible, dropdown menu",
   "scripts": {
     "start": "parcel demo/index.html",
     "test": "jest",
     "prettier": "prettier --write .",
-    "build:docs": "parcel --version && rm -rf docs/* && parcel build demo/index.html --dist-dir docs --public-url ."
+    "build:docs": "rm -rf docs/* && parcel build demo/index.html --dist-dir docs --public-url ."
   },
   "repository": {
     "type": "git",
