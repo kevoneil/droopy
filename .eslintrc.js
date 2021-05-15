@@ -25,7 +25,6 @@ module.exports = {
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
-    "operator-linebreak": "off",
     "object-curly-newline": "off",
     indent: "off",
     "comma-dangle": "off",

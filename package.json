@@ -10,7 +10,7 @@
     "start": "parcel demo/index.html --target default",
     "test": "jest --coverage",
     "prettier": "prettier --write .",
-    "lint": "npx eslint src --ext .ts --ext .tsx --fix",
+    "lint": "npx eslint src --ext .ts --fix",
     "build": "npx rimraf dist && npx parcel build src/index.ts --dist-dir dist --target default",
     "build:docs": "npx rimraf docs/* && npx parcel build demo/index.html --dist-dir docs --public-url . --target default"
   },
