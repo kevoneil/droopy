@@ -62,14 +62,14 @@ export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
                             : "Popular Searches"}
                         </h3>
                         <AutocompleteList
-                          key={`${entryName}-listBox`}
+                          key={`${entryName}-${value}-listBox`}
                           aria-labelledby={headerId}
                           className="dropdown-entry-list"
                         >
                           {(value as string[]).map((s, optionIndex) => (
                             <AutocompleteEntry
                               className="dropdown-entry"
-                              key={`${entry}-listItem`}
+                              key={`${entry}-${s}-listItem`}
                               highlightedClassName="highlighted-entry"
                               onMouseEnter={() => {
                                 setHighlightedEntry(s, entryName);
