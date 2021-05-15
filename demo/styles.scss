@@ -70,6 +70,9 @@ form {
 
 .dropdown-entry {
   padding: 8px;
+  &:hover {
+    background: #e4e4e4;
+  }
 }
 
 .hidden-text {
