@@ -12,7 +12,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "jest"],
   rules: {
     "import/extensions": "off",
   },
@@ -23,5 +23,8 @@ module.exports = {
     "import/resolver": {
       typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
     },
+  },
+  env: {
+    "jest/globals": true,
   },
 };
