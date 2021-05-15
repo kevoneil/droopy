@@ -22,9 +22,12 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "error",
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off",
+    "react/require-default-props": "off",
     "import/prefer-default-export": "off",
     "operator-linebreak": "off",
     "object-curly-newline": "off",
+    indent: "off",
+    "comma-dangle": "off",
     quotes: ["error", "double"],
   },
   settings: {

@@ -6,7 +6,7 @@ import {
   AutocompleteList,
   AutocompleteEntry,
   AutocompleteContextProvider,
-} from "../";
+} from "..";
 
 const placeholderText = "Search...";
 
@@ -15,19 +15,18 @@ const results = {
   trendingSearches: ["beer", "candy", "marshmellows"],
 };
 
-const mount = () =>
-  render(
-    <AutocompleteContextProvider results={results}>
-      <AutocompleteInput
-        ref={() => {}}
-        value="test"
-        onInputChange={() => {}}
-        placeholder={placeholderText}
-      />
-      <AutocompleteList>
-        <AutocompleteEntry>test</AutocompleteEntry>
-      </AutocompleteList>
-    </AutocompleteContextProvider>
+const mount = () => render(
+  <AutocompleteContextProvider results={results}>
+    <AutocompleteInput
+      ref={() => {}}
+      value="test"
+      onInputChange={() => {}}
+      placeholder={placeholderText}
+    />
+    <AutocompleteList>
+      <AutocompleteEntry>test</AutocompleteEntry>
+    </AutocompleteList>
+  </AutocompleteContextProvider>
   );
 
 describe("happy path", () => {
