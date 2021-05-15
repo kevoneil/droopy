@@ -24,6 +24,22 @@ describe("useHighlightedEntry hook", () => {
     expect(result.current.activeGroupIndex).toEqual(0);
   });
 
+  it("should return first entry if user navigates past last one", () => {
+    const { result } = renderHook(() => useHighlightedEntry(results));
+
+    act(() => {
+      result.current.getNextEntry();
+      result.current.getNextEntry();
+      result.current.getNextEntry();
+      result.current.getNextEntry();
+      result.current.getNextEntry();
+    });
+
+    expect(result.current.highlightedIndex).toEqual(0);
+    expect(result.current.activeGroup).toEqual(ResultKey.Recent);
+    expect(result.current.activeGroupIndex).toEqual(0);
+  });
+
   it("should return last entry if user presses the up arrow on first entry", () => {
     const { result } = renderHook(() => useHighlightedEntry(results));
 
