@@ -51,4 +51,22 @@ describe("useHighlightedEntry hook", () => {
     expect(result.current.activeGroup).toEqual(ResultKey.Popular);
     expect(result.current.activeGroupIndex).toEqual(3);
   });
+
+  it("resets highlighted entry back to square one", () => {
+    const { result } = renderHook(() => useHighlightedEntry(results));
+
+    act(() => {
+      result.current.getPreviousEntry();
+    });
+
+    expect(result.current.highlightedIndex).toEqual(6);
+
+    act(() => {
+      result.current.resetHighlightedEntry();
+    });
+
+    expect(result.current.highlightedIndex).toEqual(-1);
+    expect(result.current.activeGroup).toEqual("");
+    expect(result.current.activeGroupIndex).toEqual(-1);
+  });
 });
