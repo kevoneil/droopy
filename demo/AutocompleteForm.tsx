@@ -9,11 +9,6 @@ import {
   useShowDropdown,
 } from "../src";
 
-const results = {
-  recentSearches: ["beer", "hummus", "candy", "chocolate", "cookies"],
-  trendingSearches: ["kale", "beer", "cake"],
-};
-
 const DROPDOWN_ID = "droopy-dropdown";
 
 interface Props {
@@ -51,14 +46,12 @@ export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
                 className="droopy-dropdown"
               >
                 {flattenedResults &&
-                  Object.entries(results).map((entry, listIndex) => {
+                  Object.entries(results).map((entry) => {
                     const [entryName, value] = entry;
                     const headerId = `group-${entryName}-header`;
 
                     return (
-                      <React.Fragment
-                        key={`${entryName}-${listIndex}-fragment`}
-                      >
+                      <React.Fragment key={`${entryName}-fragment`}>
                         <h3
                           id={headerId}
                           className="dropdown-entry-header"

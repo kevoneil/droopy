@@ -1,14 +1,12 @@
 import React, { useState, useRef } from "react";
 
-import { useShowDropdown, AutocompleteContextProvider } from "../src";
+import { AutocompleteContextProvider } from "../src";
 import { AutocompleteForm } from "./AutocompleteForm";
 
 const results = {
   recentSearches: ["beer", "hummus", "candy", "chocolate", "cookies"],
   trendingSearches: ["kale", "beer", "cake"],
 };
-
-const DROPDOWN_ID = "droopy-dropdown";
 
 export const Autocomplete = () => {
   const inputRef = useRef<HTMLInputElement>(null);

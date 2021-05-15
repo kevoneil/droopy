@@ -24,6 +24,7 @@ module.exports = {
     "react/prop-types": "off",
     "import/prefer-default-export": "off",
     "operator-linebreak": "off",
+    "object-curly-newline": "off",
     quotes: ["error", "double"],
   },
   settings: {
