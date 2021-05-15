@@ -19,6 +19,8 @@ module.exports = {
     "@typescript-eslint/no-shadow": ["error"],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
+    "react/jsx-filename-extension": "off",
+    "import/prefer-default-export": "off",
     quotes: ["error", "double"],
   },
   settings: {
