@@ -6,6 +6,7 @@
     "start": "parcel demo/index.html",
     "test": "jest",
     "prettier": "prettier --write .",
+    "lint": "npx eslint src --ext .ts",
     "build": "rm -rf dist && parcel build src/index.ts --dist-dir dist",
     "build:docs": "rm -rf docs/* && parcel build demo/index.html --dist-dir docs --public-url ."
   },
