@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useShowDropdown = (inputRef) => {
+const useShowDropdown = (inputRef) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
@@ -13,3 +13,5 @@ export const useShowDropdown = (inputRef) => {
 
   return showDropdown;
 };
+
+export default useShowDropdown;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useHighlightedEntry = (results: Record<string, string[]>) => {
+const useHighlightedEntry = (results: Record<string, string[]>) => {
   // for internal tracking
   const newResults = Object.entries(results).map((entry) => {
     const [entryName, values] = entry;
@@ -53,3 +53,5 @@ export const useHighlightedEntry = (results: Record<string, string[]>) => {
     getNextEntry,
   };
 };
+
+export default useHighlightedEntry;

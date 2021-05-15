@@ -1,5 +1,5 @@
 import { useContext, createContext } from 'react';
-import { useHighlightedEntry } from './useHighlighedEntry';
+import useHighlightedEntry from './useHighlighedEntry';
 
 type ContextReturnType = ReturnType<typeof useHighlightedEntry>;
 
