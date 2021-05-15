@@ -13,6 +13,7 @@ export const AutocompleteEntry = ({
   className,
   children,
   id,
+  ...options
 }: Props) => {
   const { activeGroup, activeGroupIndex } = useAutocomplete();
   const highlightedId = `group-${activeGroup}-option-${activeGroupIndex}`;
@@ -27,6 +28,7 @@ export const AutocompleteEntry = ({
         isHighlighted ? `${className} ${highlightedClassName}` : className
       }
       style={isHighlighted ? highlightedCSS : {}}
+      {...options}
     >
       {children}
     </li>

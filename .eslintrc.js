@@ -23,7 +23,9 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off",
     "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
+
     "operator-linebreak": "off",
     "object-curly-newline": "off",
     indent: "off",
