@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     "jest/globals": true,
   },
-  extends: ["plugin:react/recommended", "airbnb"],
+  extends: ["plugin:react/recommended", "airbnb", "prettier"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -25,7 +25,6 @@ module.exports = {
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
-
     "operator-linebreak": "off",
     "object-curly-newline": "off",
     indent: "off",
