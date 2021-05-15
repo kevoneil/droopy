@@ -20,6 +20,7 @@ module.exports = {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "react/jsx-filename-extension": "off",
+    "react/prop-types": "off",
     "import/prefer-default-export": "off",
     quotes: ["error", "double"],
   },

@@ -8,6 +8,7 @@ export const AutocompleteContext = createContext<ContextReturnType>({
   activeGroupIndex: -1,
   highlightedIndex: -1,
   getPreviousEntry: () => "",
+  setHighlightedEntry: () => "",
   getNextEntry: () => "",
   resetHighlightedEntry: () => "",
 });
