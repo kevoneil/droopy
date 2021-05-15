@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, Dispatch, SetStateAction } from "react";
 
 import {
   AutocompleteList,
@@ -20,7 +20,7 @@ interface Props {
   results: Record<string, string[]>;
   flattenedResults: string[];
   inputValue: string;
-  setInputValue: () => void;
+  setInputValue: Dispatch<SetStateAction<string>>;
 }
 
 export const AutocompleteForm = forwardRef<HMTMLInputElement, Props>(
@@ -40,7 +40,6 @@ export const AutocompleteForm = forwardRef<HMTMLInputElement, Props>(
             autoCapitalize="off"
             autoCorrect="off"
             aria-controls={DROPDOWN_ID}
-            aria-expanded
             aria-expanded={showDropdown && flattenedResults.length > 0}
             className="droopy-input"
           />
