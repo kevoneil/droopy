@@ -1,18 +1,18 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import useHighlightedEntry from "../useHighlightedEntry";
+import { renderHook, act } from '@testing-library/react-hooks';
+import useHighlightedEntry from '../useHighlightedEntry';
 
 enum ResultKey {
-  Recent = "recentSearches",
-  Popular = "popularSearches",
+  Recent = 'recentSearches',
+  Popular = 'popularSearches',
 }
 
 const results = {
-  [ResultKey.Recent]: ["candy", "beer", "hummus"],
-  [ResultKey.Popular]: ["wine", "cheese", "sushi", "curry"],
+  [ResultKey.Recent]: ['candy', 'beer', 'hummus'],
+  [ResultKey.Popular]: ['wine', 'cheese', 'sushi', 'curry'],
 };
 
-describe("useHighlightedEntry hook", () => {
-  it("should increment highlighted entry index", () => {
+describe('useHighlightedEntry hook', () => {
+  it('should increment highlighted entry index', () => {
     const { result } = renderHook(() => useHighlightedEntry(results));
 
     act(() => {
@@ -24,7 +24,7 @@ describe("useHighlightedEntry hook", () => {
     expect(result.current.activeGroupIndex).toEqual(0);
   });
 
-  it("should return first entry if user navigates past last one", () => {
+  it('should return first entry if user navigates past last one', () => {
     const { result } = renderHook(() => useHighlightedEntry(results));
 
     act(() => {
@@ -40,7 +40,7 @@ describe("useHighlightedEntry hook", () => {
     expect(result.current.activeGroupIndex).toEqual(0);
   });
 
-  it("should return last entry if user presses the up arrow on first entry", () => {
+  it('should return last entry if user presses the up arrow on first entry', () => {
     const { result } = renderHook(() => useHighlightedEntry(results));
 
     act(() => {
@@ -52,7 +52,7 @@ describe("useHighlightedEntry hook", () => {
     expect(result.current.activeGroupIndex).toEqual(3);
   });
 
-  it("resets highlighted entry back to square one", () => {
+  it('resets highlighted entry back to square one', () => {
     const { result } = renderHook(() => useHighlightedEntry(results));
 
     act(() => {
@@ -66,7 +66,7 @@ describe("useHighlightedEntry hook", () => {
     });
 
     expect(result.current.highlightedIndex).toEqual(-1);
-    expect(result.current.activeGroup).toEqual("");
+    expect(result.current.activeGroup).toEqual('');
     expect(result.current.activeGroupIndex).toEqual(-1);
   });
 });
