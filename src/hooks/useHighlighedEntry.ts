@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export const useHighlightedEntry = (results: Record<string, string[]>) => {
   // for internal tracking
@@ -8,18 +8,18 @@ export const useHighlightedEntry = (results: Record<string, string[]>) => {
     return values.map((value) => `${value}-${entryName}`);
   });
 
-  const [activeGroup, setActiveGroup] = useState("");
+  const [activeGroup, setActiveGroup] = useState('');
   const [activeGroupIndex, setActiveGroupIndex] = useState(0);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const flattenedResults = Object.values(newResults).flat();
 
   const getNewEntry = (newIndex: number) => {
-    const result = flattenedResults?.[newIndex]?.split("-");
-    const activeGroupGetter = result?.[1] || "";
+    const result = flattenedResults?.[newIndex]?.split('-');
+    const activeGroupGetter = result?.[1] || '';
     setActiveGroup(activeGroupGetter);
     setHighlightedIndex(newIndex);
     setActiveGroupIndex(results?.[activeGroupGetter]?.indexOf(result[0]));
-    return result?.[0] || "";
+    return result?.[0] || '';
   };
 
   const getPreviousEntry = () => {
@@ -40,8 +40,8 @@ export const useHighlightedEntry = (results: Record<string, string[]>) => {
 
   const resetHighlightedEntry = () => {
     setHighlightedIndex(-1);
-    setActiveGroup("");
-    return "";
+    setActiveGroup('');
+    return '';
   };
 
   return {
