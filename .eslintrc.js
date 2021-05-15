@@ -15,6 +15,10 @@ module.exports = {
   plugins: ["react", "@typescript-eslint", "jest"],
   rules: {
     "import/extensions": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
   },
   settings: {
     "import/parsers": {
