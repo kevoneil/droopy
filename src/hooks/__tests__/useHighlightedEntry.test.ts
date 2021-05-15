@@ -8,7 +8,7 @@ enum ResultKey {
 
 const results = {
   [ResultKey.Recent]: ["candy", "beer", "hummus"],
-  [ResultKey.Popular]: ["wine", "cheese", "sushi", "curry"],
+  [ResultKey.Popular]: ["wine", "beer", "sushi", "curry"],
 };
 
 describe("useHighlightedEntry hook", () => {
@@ -38,6 +38,35 @@ describe("useHighlightedEntry hook", () => {
     expect(result.current.highlightedIndex).toEqual(0);
     expect(result.current.activeGroup).toEqual(ResultKey.Recent);
     expect(result.current.activeGroupIndex).toEqual(0);
+  });
+
+  it("should not get confused when met with duplicate string", () => {
+    const { result } = renderHook(() => useHighlightedEntry(results));
+
+    act(() => {
+      result.current.getNextEntry();
+    });
+
+    act(() => {
+      result.current.getNextEntry();
+    });
+
+    act(() => {
+      result.current.getNextEntry();
+    });
+
+    act(() => {
+      result.current.getNextEntry();
+    });
+
+    act(() => {
+      result.current.getNextEntry();
+    });
+
+    // should return 'beer' in the second list
+    expect(result.current.highlightedIndex).toEqual(4);
+    expect(result.current.activeGroup).toEqual(ResultKey.Popular);
+    expect(result.current.activeGroupIndex).toEqual(1);
   });
 
   it("should return last entry if user presses the up arrow on first entry", () => {
