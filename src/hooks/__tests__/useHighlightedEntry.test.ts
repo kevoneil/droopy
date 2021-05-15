@@ -40,7 +40,7 @@ describe("useHighlightedEntry hook", () => {
     expect(result.current.activeGroupIndex).toEqual(0);
   });
 
-  it("should not get confused when met with duplicate string", () => {
+  it("should not get confused when met with duplicate term", () => {
     const { result } = renderHook(() => useHighlightedEntry(results));
 
     act(() => {
