@@ -45,10 +45,20 @@ const useHighlightedEntry = (results: Record<string, string[]>) => {
     return "";
   };
 
+  const setHighlightedEntry = (term: string, groupName: string) => {
+    const entry = flattenedResults.findIndex(
+      (string) => string === `${term}-${groupName}`
+    );
+    setHighlightedIndex(entry);
+    setActiveGroup(groupName);
+    setActiveGroupIndex(results?.[groupName].indexOf(term));
+  };
+
   return {
     activeGroup,
     activeGroupIndex,
     highlightedIndex,
+    setHighlightedEntry,
     getPreviousEntry,
     resetHighlightedEntry,
     getNextEntry,

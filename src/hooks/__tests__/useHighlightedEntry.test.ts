@@ -98,4 +98,16 @@ describe("useHighlightedEntry hook", () => {
     expect(result.current.activeGroup).toEqual("");
     expect(result.current.activeGroupIndex).toEqual(-1);
   });
+
+  it("sets highilghted entry", () => {
+    const { result } = renderHook(() => useHighlightedEntry(results));
+
+    act(() => {
+      result.current.setHighlightedEntry("beer", ResultKey.Popular);
+    });
+
+    expect(result.current.highlightedIndex).toEqual(4);
+    expect(result.current.activeGroup).toEqual(ResultKey.Popular);
+    expect(result.current.activeGroupIndex).toEqual(1);
+  });
 });
