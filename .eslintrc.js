@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    "jest/globals": true,
   },
   extends: ["plugin:react/recommended", "airbnb"],
   parser: "@typescript-eslint/parser",
@@ -22,6 +23,7 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off",
     "import/prefer-default-export": "off",
+    "operator-linebreak": "off",
     quotes: ["error", "double"],
   },
   settings: {
@@ -31,8 +33,5 @@ module.exports = {
     "import/resolver": {
       typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
     },
-  },
-  env: {
-    "jest/globals": true,
   },
 };

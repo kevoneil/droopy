@@ -23,7 +23,7 @@ interface Props {
   setInputValue: Dispatch<SetStateAction<string>>;
 }
 
-export const AutocompleteForm = forwardRef<HMTMLInputElement, Props>(
+export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
     const { results, flattenedResults, inputValue, setInputValue } = props;
     const { setHighlightedEntry } = useAutocomplete();
