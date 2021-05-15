@@ -4,7 +4,7 @@
   "description": "A better, more accessible, dropdown menu",
   "scripts": {
     "start": "parcel demo/index.html",
-    "test": "jest",
+    "test": "jest --coverage",
     "prettier": "prettier --write .",
     "lint": "npx eslint src --ext .ts --fix",
     "build": "rm -rf dist && parcel build src/index.ts --dist-dir dist",
