@@ -1,5 +1,5 @@
 {
-  "name": "droopy-dropdown",
+  "name": "droopy",
   "version": "1.0.0",
   "description": "A better, more accessible, dropdown menu",
   "main": "dist/index.js",
