@@ -1,5 +1,5 @@
 {
-  "name": "droopy",
+  "name": "droopy-dropdown",
   "version": "1.0.0",
   "description": "A better, more accessible, dropdown menu",
   "main": "dist/index.js",
@@ -18,8 +18,15 @@
     "type": "git",
     "url": "git+https://github.com/kevoneil/droopy.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "a11y",
+    "dropdown",
+    "droopy",
+    "autocomplete",
+    "search bar",
+    "search"
+  ],
+  "author": "Kevin O'Neil (@kevoneil)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kevoneil/droopy/issues"
