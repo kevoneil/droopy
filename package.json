@@ -26,7 +26,10 @@
     "search bar",
     "search"
   ],
-  "author": "Kevin O'Neil (@kevoneil)",
+  "author": {
+    "name": "Kevin O'Neil (@kevoneil)",
+    "email": "kevinmoneil@live.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kevoneil/droopy/issues"
