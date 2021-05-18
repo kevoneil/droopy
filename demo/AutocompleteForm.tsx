@@ -34,6 +34,7 @@ export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
             onInputChange={setInputValue}
             autoCapitalize="off"
             autoCorrect="off"
+            aria-autocomplete="list"
             aria-controls={DROPDOWN_ID}
             aria-expanded={showDropdown && flattenedResults.length > 0}
             className="droopy-input"
