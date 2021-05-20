@@ -36,6 +36,7 @@ form {
   border-radius: 8px;
   border-style: solid;
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  z-index: 1;
 }
 
 .droopy-input:focus {
@@ -43,7 +44,7 @@ form {
 }
 
 .droopy-input:focus-visible {
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .droopy-dropdown {
