@@ -1,6 +1,6 @@
 {
-  "name": "@kevoneil/droopy",
-  "version": "1.0.1",
+  "name": "droopy-dropdown",
+  "version": "1.0.2",
   "description": "A better, more accessible, dropdown menu",
   "main": "dist/index.js",
   "targets": {
@@ -11,7 +11,7 @@
     "test": "jest --coverage",
     "prettier": "prettier --write .",
     "lint": "npx eslint src --ext .ts --fix",
-    "build": "npx rimraf dist && npx parcel build src/index.ts --dist-dir dist --target default",
+    "build": "npx rollup -c",
     "build:docs": "npx rimraf docs/* && npx parcel build demo/index.html --dist-dir docs --public-url . --target default"
   },
   "repository": {
@@ -37,6 +37,7 @@
   "homepage": "https://github.com/kevoneil/droopy#readme",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.0-beta.2",
+    "@rollup/plugin-typescript": "^8.2.1",
     "@testing-library/react": "^11.2.6",
     "@testing-library/react-hooks": "^5.1.2",
     "@types/jest": "^26.0.22",
