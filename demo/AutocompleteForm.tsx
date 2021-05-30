@@ -21,7 +21,7 @@ interface Props {
 export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
     const { results, flattenedResults, inputValue, setInputValue } = props;
-    const { setHighlightedEntry } = useAutocomplete();
+    const { setHighlightedEntry, activeGroupEntry } = useAutocomplete();
     const showDropdown = useShowDropdown(ref);
 
     return (
@@ -37,6 +37,7 @@ export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
             aria-autocomplete="list"
             aria-controls={DROPDOWN_ID}
             aria-expanded={showDropdown && flattenedResults.length > 0}
+            aria-activedescendant={activeGroupEntry}
             className="droopy-input"
           />
           {showDropdown &&

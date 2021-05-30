@@ -54,9 +54,12 @@ const useHighlightedEntry = (results: Record<string, string[]>) => {
     setActiveGroupIndex(results?.[groupName].indexOf(term));
   };
 
+  const activeGroupEntry = `group-${activeGroup}-option-${setActiveGroupIndex}`;
+
   return {
     activeGroup,
     activeGroupIndex,
+    activeGroupEntry,
     highlightedIndex,
     setHighlightedEntry,
     getPreviousEntry,
