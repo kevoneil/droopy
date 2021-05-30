@@ -14,3 +14,7 @@ npm i droopy-dropdown
 // or
 yarn i droopy-dropdown
 ```
+
+## Demo
+
+Wanna see how it all works? Checkout the demo [here](https://kevoneil.github.io/droopy/)
