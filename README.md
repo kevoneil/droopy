@@ -10,8 +10,11 @@ To install this package from NPM run:
 
 ```
 npm i droopy-dropdown
+```
 
-// or
+or
+
+```
 yarn add droopy-dropdown
 ```
 
