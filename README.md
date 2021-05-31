@@ -12,7 +12,7 @@ To install this package from NPM run:
 npm i droopy-dropdown
 
 // or
-yarn i droopy-dropdown
+yarn add droopy-dropdown
 ```
 
 ## Demo
