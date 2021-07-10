@@ -1,12 +1,12 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import {
   AutocompleteInput,
   AutocompleteList,
   AutocompleteEntry,
   AutocompleteContextProvider,
-} from "..";
+} from "../index";
 
 const placeholderText = "Search...";
 
@@ -17,7 +17,13 @@ const results = {
 
 const mount = () =>
   render(
-    <AutocompleteContextProvider results={results}>
+    <AutocompleteContextProvider
+      results={results}
+      inputValue=""
+      setInputValue={() => {}}
+      lastTypedValue=""
+      setLastTypedValue={() => {}}
+    >
       <AutocompleteInput
         ref={() => {}}
         value="test"
