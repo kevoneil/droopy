@@ -49,7 +49,9 @@ describe("Autocomplete demo", () => {
     });
 
     expect(screen.queryByText(/beer/i)).toBeNull();
-    expect(screen.getByText(/0 results found/i)).toBeDefined();
+
+    // resets to initial results
+    expect(screen.getByText(/8 results found/i)).toBeDefined();
   });
 
   it("fills in input field with first entry if user presses down key", () => {
