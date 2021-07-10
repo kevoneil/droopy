@@ -19,9 +19,9 @@ describe("Autocomplete demo", () => {
 
     const input = screen.getByPlaceholderText(placeholderText);
 
-    fireEvent.change(input, { target: { value: "beer" } });
+    fireEvent.change(input, { target: { value: "candy" } });
 
-    expect(screen.getByText(/kale/i)).toBeDefined();
+    expect(screen.getByDisplayValue(/candy/i)).toBeDefined();
   });
 
   it("renders correct number of results found", () => {
