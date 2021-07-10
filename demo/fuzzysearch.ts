@@ -11,8 +11,6 @@ export const fuzzySearch = (input: string, results: string[]) => {
       if (resArr.indexOf(char) < 0) {
         valid = false;
       } else {
-        // splice modifies current string
-        // slice creates a shallow copy
         resArr.splice(resArr.indexOf(char), 1);
       }
     });

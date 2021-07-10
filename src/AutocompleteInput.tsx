@@ -17,6 +17,8 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
       getNextEntry,
       getPreviousEntry,
       resetHighlightedEntry,
+      setInputValue,
+      setLastTypedValue,
     } = useAutocomplete();
 
     return (
@@ -28,18 +30,19 @@ export const AutocompleteInput = forwardRef<HTMLInputElement, Props>(
             event.preventDefault();
             const entry = getPreviousEntry();
 
-            onInputChange(entry);
+            setInputValue(entry);
           }
 
           if (event.key === "ArrowDown") {
             event.preventDefault();
             const entry = getNextEntry();
 
-            onInputChange(entry);
+            setInputValue(entry);
           }
 
           if (event.key === "Escape") {
-            onInputChange("");
+            setInputValue("");
+            setLastTypedValue("");
             resetHighlightedEntry();
           }
         }}

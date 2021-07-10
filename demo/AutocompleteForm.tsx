@@ -1,4 +1,4 @@
-import React, { forwardRef, Dispatch, SetStateAction } from "react";
+import React, { forwardRef, Dispatch, SetStateAction, FormEvent } from "react";
 
 import {
   AutocompleteList,
@@ -13,16 +13,31 @@ const DROPDOWN_ID = "droopy-dropdown";
 
 interface Props {
   results: Record<string, string[]>;
+  isInputFocused?: boolean;
+  onInputFocus?: () => void;
+  onInputBlur?: () => void;
   flattenedResults: string[];
-  inputValue: string;
-  setInputValue: Dispatch<SetStateAction<string>>;
 }
 
 export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
   (props, ref) => {
-    const { results, flattenedResults, inputValue, setInputValue } = props;
-    const { setHighlightedEntry, activeGroupEntry } = useAutocomplete();
-    const showDropdown = useShowDropdown(ref);
+    const {
+      results,
+      flattenedResults,
+      isInputFocused,
+      onInputFocus,
+      onInputBlur,
+    } = props;
+    const {
+      setHighlightedEntry,
+      activeGroupEntry,
+      inputValue,
+      setInputValue,
+      setLastTypedValue,
+    } = useAutocomplete();
+
+    const showDropdown = isInputFocused && flattenedResults.length > 0;
+    console.log("hiii", showDropdown);
 
     return (
       <>
@@ -31,7 +46,12 @@ export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
             placeholder="Search..."
             ref={ref}
             value={inputValue}
-            onInputChange={setInputValue}
+            onInputChange={(value: string) => {
+              setInputValue(value);
+              setLastTypedValue(value);
+            }}
+            onFocus={onInputFocus}
+            onBlur={onInputBlur}
             autoCapitalize="off"
             autoCorrect="off"
             aria-autocomplete="list"
@@ -40,53 +60,48 @@ export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
             aria-activedescendant={activeGroupEntry}
             className="droopy-input"
           />
-          {showDropdown &&
-            inputValue.length > 0 &&
-            flattenedResults?.length > 0 && (
-              <AutocompleteDropdown
-                id={DROPDOWN_ID}
-                className="droopy-dropdown"
-              >
-                {flattenedResults &&
-                  Object.entries(results).map((entry) => {
-                    const [entryName, value] = entry;
-                    const headerId = `group-${entryName}-header`;
+          {showDropdown && (
+            <AutocompleteDropdown id={DROPDOWN_ID} className="droopy-dropdown">
+              {flattenedResults &&
+                Object.entries(results).map((entry) => {
+                  const [entryName, value] = entry;
+                  const headerId = `group-${entryName}-header`;
 
-                    return (
-                      <React.Fragment key={`${entryName}-fragment`}>
-                        <h3
-                          id={headerId}
-                          className="dropdown-entry-header"
-                          aria-hidden
-                        >
-                          {entryName === "recentSearches"
-                            ? "Recent Searches"
-                            : "Popular Searches"}
-                        </h3>
-                        <AutocompleteList
-                          key={`${entryName}-${value}-listBox`}
-                          aria-labelledby={headerId}
-                          className="dropdown-entry-list"
-                        >
-                          {(value as string[]).map((s, optionIndex) => (
-                            <AutocompleteEntry
-                              className="dropdown-entry"
-                              key={`${entry}-${s}-listItem`}
-                              highlightedClassName="highlighted-entry"
-                              onMouseEnter={() => {
-                                setHighlightedEntry(s, entryName);
-                              }}
-                              id={`group-${entryName}-option-${optionIndex}`}
-                            >
-                              {s}
-                            </AutocompleteEntry>
-                          ))}
-                        </AutocompleteList>
-                      </React.Fragment>
-                    );
-                  })}
-              </AutocompleteDropdown>
-            )}
+                  return (
+                    <React.Fragment key={`${entryName}-fragment`}>
+                      <h3
+                        id={headerId}
+                        className="dropdown-entry-header"
+                        aria-hidden
+                      >
+                        {entryName === "recentSearches"
+                          ? "Recent Searches"
+                          : "Popular Searches"}
+                      </h3>
+                      <AutocompleteList
+                        key={`${entryName}-${value}-listBox`}
+                        aria-labelledby={headerId}
+                        className="dropdown-entry-list"
+                      >
+                        {(value as string[]).map((s, optionIndex) => (
+                          <AutocompleteEntry
+                            className="dropdown-entry"
+                            key={`${entry}-${s}-listItem`}
+                            highlightedClassName="highlighted-entry"
+                            onMouseEnter={() => {
+                              setHighlightedEntry(s, entryName);
+                            }}
+                            id={`group-${entryName}-option-${optionIndex}`}
+                          >
+                            {s}
+                          </AutocompleteEntry>
+                        ))}
+                      </AutocompleteList>
+                    </React.Fragment>
+                  );
+                })}
+            </AutocompleteDropdown>
+          )}
         </form>
       </>
     );

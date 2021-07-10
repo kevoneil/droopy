@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { AutocompleteContextProvider } from "../src";
 import { AutocompleteForm } from "./AutocompleteForm";
+import { fuzzySearch } from "./fuzzysearch";
 
 const results = {
   recentSearches: ["beer", "hummus", "candy", "chocolate", "cookies"],
@@ -11,21 +12,41 @@ const results = {
 export const Autocomplete = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState("");
+  const [lastTypedValue, setLastTypedValue] = useState("");
+  const [isInputFocused, setIsFocused] = useState(false);
 
-  const finalResults = inputValue.length > 0 ? results : {};
-  const flattenedResults = Object.values(finalResults).flat() as string[];
+  const flattenedResults = Object.values(results).flat() as string[];
   const resultsString = flattenedResults
     ? `${flattenedResults?.length} results found`
     : "0 results found";
+  const fuzzySearchResults =
+    fuzzySearch(lastTypedValue, flattenedResults) || [];
+  const showInitialResults = isInputFocused && lastTypedValue.length === 0;
+  const autocompleteResults = {
+    autocompleteResults: fuzzySearchResults,
+  };
 
   return (
-    <AutocompleteContextProvider results={finalResults}>
+    <AutocompleteContextProvider
+      results={showInitialResults ? results : autocompleteResults}
+      inputValue={inputValue}
+      setInputValue={setInputValue}
+      lastTypedValue={inputValue}
+      setLastTypedValue={setLastTypedValue}
+    >
       <AutocompleteForm
         ref={inputRef}
-        results={results}
-        flattenedResults={flattenedResults}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
+        results={showInitialResults ? results : autocompleteResults}
+        isInputFocused={isInputFocused}
+        onInputFocus={() => {
+          setIsFocused(true);
+        }}
+        onInputBlur={() => {
+          setIsFocused(false);
+        }}
+        flattenedResults={
+          showInitialResults ? flattenedResults : fuzzySearchResults
+        }
       />
       <div aria-live="assertive" className="hidden-text">
         {resultsString}
