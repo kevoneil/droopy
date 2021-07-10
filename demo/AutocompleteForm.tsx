@@ -37,7 +37,6 @@ export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
     } = useAutocomplete();
 
     const showDropdown = isInputFocused && flattenedResults.length > 0;
-    console.log("hiii", showDropdown);
 
     return (
       <>

@@ -76,22 +76,22 @@ describe("Autocomplete demo", () => {
 
     const input = screen.getByPlaceholderText(placeholderText);
 
-    fireEvent.change(input, { target: { value: "bread" } });
+    fireEvent.change(input, { target: { value: "ca" } });
 
-    const newInput = screen.getByDisplayValue(/bread/i);
-
-    fireEvent.keyDown(newInput, {
-      key: "ArrowDown",
-      code: "ArrowDown",
-    });
-
-    expect(screen.getByDisplayValue(/beer/i)).toBeDefined();
+    const newInput = screen.getByDisplayValue(/ca/i);
 
     fireEvent.keyDown(newInput, {
       key: "ArrowDown",
       code: "ArrowDown",
     });
 
-    expect(screen.getByDisplayValue(/hummus/i)).toBeDefined();
+    expect(screen.getByDisplayValue(/candy/i)).toBeDefined();
+
+    fireEvent.keyDown(newInput, {
+      key: "ArrowDown",
+      code: "ArrowDown",
+    });
+
+    expect(screen.getByDisplayValue(/chocolate/i)).toBeDefined();
   });
 });
