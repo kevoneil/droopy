@@ -8,10 +8,10 @@ const placeholderText = "Search...";
 const mount = () => render(<Autocomplete />);
 
 describe("Autocomplete demo", () => {
-  it("renders 0 results found", () => {
+  it("renders 8 results found when loading in initial results", () => {
     mount();
 
-    expect(screen.getByText(/0 results found/i)).toBeDefined();
+    expect(screen.getByText(/8 results found/i)).toBeDefined();
   });
 
   it("renders value and brings up dropdown", () => {
