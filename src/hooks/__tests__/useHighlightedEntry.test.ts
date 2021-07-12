@@ -90,7 +90,7 @@ describe("useHighlightedEntry hook", () => {
     // should return 'beer' in the second list
     expect(result.current.highlightedIndex).toEqual(4);
     expect(result.current.activeGroup).toEqual(ResultKey.Popular);
-    expect(result.current.activeGroupIndex).toEqual(1);
+    expect(result.current.activeGroupIndex).toEqual(4);
   });
 
   it("should return last entry if user presses the up arrow on first entry", () => {
@@ -102,7 +102,7 @@ describe("useHighlightedEntry hook", () => {
 
     expect(result.current.highlightedIndex).toEqual(6);
     expect(result.current.activeGroup).toEqual(ResultKey.Popular);
-    expect(result.current.activeGroupIndex).toEqual(3);
+    expect(result.current.activeGroupIndex).toEqual(6);
   });
 
   it("resets highlighted entry back to square one", () => {
@@ -130,7 +130,6 @@ describe("useHighlightedEntry hook", () => {
       result.current.setHighlightedEntry("beer", ResultKey.Popular);
     });
 
-    expect(result.current.highlightedIndex).toEqual(4);
     expect(result.current.activeGroup).toEqual(ResultKey.Popular);
     expect(result.current.activeGroupIndex).toEqual(1);
   });

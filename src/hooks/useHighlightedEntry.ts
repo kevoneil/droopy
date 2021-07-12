@@ -1,11 +1,15 @@
 import { useState } from "react";
+import key from "weak-key";
 
 const useHighlightedEntry = (results: Record<string, string[]>) => {
   // for internal tracking
   const newResults = Object.entries(results).map((entry) => {
     const [entryName, values] = entry;
 
-    return values.map((value) => `${value}-${entryName}`);
+    return values.map((value) => {
+      const uniqueKey = key({ text: `${value}-${entryName}` });
+      return `${value}-${entryName}-${uniqueKey}`;
+    });
   });
 
   const [activeGroup, setActiveGroup] = useState("");
@@ -18,7 +22,7 @@ const useHighlightedEntry = (results: Record<string, string[]>) => {
     const activeGroupGetter = result?.[1] || "";
     setActiveGroup(activeGroupGetter);
     setHighlightedIndex(newIndex);
-    setActiveGroupIndex(results?.[activeGroupGetter]?.indexOf(result[0]));
+    setActiveGroupIndex(newResults.flat().indexOf(result.join("-")));
     return result?.[0] || "";
   };
 
