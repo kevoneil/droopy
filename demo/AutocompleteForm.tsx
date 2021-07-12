@@ -85,12 +85,13 @@ export const AutocompleteForm = forwardRef<HTMLInputElement, Props>(
                         {(value as string[]).map((s, optionIndex) => (
                           <AutocompleteEntry
                             className="dropdown-entry"
-                            key={`${entry}-${s}-listItem`}
+                            id={`group-${entryName}-option-${optionIndex}`}
+                            // eslint-disable-next-line react/no-array-index-key
+                            key={`group-${entryName}-option-${optionIndex}`}
                             highlightedClassName="highlighted-entry"
                             onMouseEnter={() => {
                               setHighlightedEntry(s, entryName);
                             }}
-                            id={`group-${entryName}-option-${optionIndex}`}
                           >
                             {s}
                           </AutocompleteEntry>
