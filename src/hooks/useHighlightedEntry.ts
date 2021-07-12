@@ -22,7 +22,14 @@ const useHighlightedEntry = (results: Record<string, string[]>) => {
     const activeGroupGetter = result?.[1] || "";
     setActiveGroup(activeGroupGetter);
     setHighlightedIndex(newIndex);
-    setActiveGroupIndex(newResults.flat().indexOf(result.join("-")));
+
+    newResults.filter((array) => {
+      if (array.indexOf(result.join("-")) > -1) {
+        setActiveGroupIndex(array.indexOf(result.join("-")));
+      }
+
+      return "";
+    });
     return result?.[0] || "";
   };
 
